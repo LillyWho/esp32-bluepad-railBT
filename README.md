@@ -5,7 +5,7 @@
 I made this as a cheaper alternative to premade G scale RC solutions, which can cost upwards of 70€.
 The parts I used are cheap and off the shelf components readily available from DIY electronics sites and ebay.
 
-In my case, I used a standard ESP32, an LN239 H-Bridge and a Google Stadia controller to control an EZTEC Toy train that runs on G Gauge.
+In my case, I used a standard ESP32, an LN239 H-Bridge and a Google Stadia controller (any other controller supported by Bluepad32 would work) to control an EZTEC Toy train that runs on G Gauge.
 For the pinout, please refer to the constants set in the sketch.
 
 Three modes are supported: 
