@@ -8,6 +8,8 @@ The parts I used are cheap and off the shelf components readily available from D
 In my case, I used a standard ESP32, an LN239 H-Bridge and a Google Stadia controller (any other controller supported by Bluepad32 would work) to control an EZTEC Toy train that runs on G Gauge.
 For the pinout, please refer to the constants set in the sketch.
 
+Please note that all button mappings that aren't A/B, X/Y may be specific to the Stadia controller and thus may have to be adjusted by reading the console printout of the Bluepad test programme, and that the maximum reported value of the thumbstick axis also needs to be adjusted according to the maximum that your specific model returns. It's not a complex process however.
+
 Three modes are supported: 
 - Mode 0 for direct control of direction and speed via the left thumb stick
 - Mode 1 for throttle mode via the left stick
