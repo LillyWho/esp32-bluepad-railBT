@@ -27,3 +27,4 @@ Three modes are supported:
 - Inertia simulation
 - Sound via the WAVTrigger board
 - Driving an ultrasonic humidifier board in sync with wheel spin to simulate steam exhaust synced to cylinder beats
+- Directional headlights
