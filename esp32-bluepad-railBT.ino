@@ -4,7 +4,7 @@ ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 // This project uses https://github.com/sbouhoun/smoother for smoothing joystick input. Please install the library using the Arduino IDE library manager.
 #include <smooth.h>
 #define nbReadings
-smooth analogSmooth[nbReadings];
+smoother analogSmooth;
 
 
 int mode = 0;  // mode 0 = absolute analogue, mode 1 = real analogue throttle mode, mode 2 = d-pad incremental mode
