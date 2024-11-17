@@ -28,3 +28,4 @@ Three modes are supported:
 - Sound via the WAVTrigger board
 - Driving an ultrasonic humidifier board in sync with wheel spin to simulate steam exhaust synced to cylinder beats
 - Directional headlights
+- Pairing multiple engines together, using the built-in Wifi module as an AP that subsequent engines can join and receive commands from
