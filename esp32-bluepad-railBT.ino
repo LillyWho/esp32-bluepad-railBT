@@ -82,6 +82,7 @@ const int motorPin2 = 15;
 const int speedPin = 2;
 bool headlightOn = false;
 bool taillightOn = false;
+String lastHeadlightState = "off";
 //////////////////////////////////////////////////////
 const int throttleInterval = 50;  //throttle repeat in ms, change according to your preference
 const int throttleSteps = 4;
@@ -288,11 +289,19 @@ void headlightControl(bool enable) {
     digitalWrite(ledPin2, false);
   } else {
     if (taillightOn) {
-      digitalWrite(ledPin1,false);
-      digitalWrite(ledPin2,true);
-    } else {
-      digitalWrite(ledPin1,true);
-      digitalWrite(ledPin1,false);
+      lastHeadlightState = "tail";
+      digitalWrite(ledPin1, false);
+      digitalWrite(ledPin2, true);
+    } else if (headlightOn) {
+      lastHeadlightState = "head";
+      digitalWrite(ledPin1, true);
+      digitalWrite(ledPin1, false);
+    } else if (lastHeadlightState == "tail" && !taillightOn) {
+      digitalWrite(ledPin1, false);
+      digitalWrite(ledPin2, true);
+    } else if (lastHeadlightState == "head" && !headlightOn) {
+      digitalWrite(ledPin1, true);
+      digitalWrite(ledPin2, false);
     }
   }
 }
@@ -315,7 +324,7 @@ void receiveMuComms() {
     if (lightMsg) {
       bool onOff;
       String command = msg.substring(lightDeLimiter.length(), msg.length());
-      headlightControl(command);
+      headlightControl(command == "ON");
     } else if (speedMsg) {
       String command = msg.substring(speedDeLimiter.length(), msg.length());
       response = msg + "ACK";
@@ -324,6 +333,7 @@ void receiveMuComms() {
       targetSpeed = abs(speedCommand);
       analogWrite(speedPin, targetSpeed);
       digitalWrite(motorPin1, speed < 0);
+      headlightOn = speed > 0;
       taillightOn = speed < 0;
       digitalWrite(motorPin2, speed > 0);
     }
@@ -518,18 +528,19 @@ void loop() {
   // https://stackoverflow.com/questions/66278271/task-watchdog-got-triggered-the-tasks-did-not-reset-the-watchdog-in-time
 
 
-
-  if (!head) {
-    if (!setupCommsComplete) {
-      setupMuComms();
-    } else {
-      receiveMuComms();
-    }
-    return;
-  } else {
-    if (!setupCommsComplete) {
-      setupMuComms();
+  if (multiHeader) {
+    if (!head) {
+      if (!setupCommsComplete) {
+        setupMuComms();
+      } else {
+        receiveMuComms();
+      }
       return;
+    } else {
+      if (!setupCommsComplete) {
+        setupMuComms();
+        return;
+      }
     }
   }
   directionPlus = direction > 0;
@@ -537,8 +548,9 @@ void loop() {
   mode0();
   mode1();
   mode2();
-
-  digitalWrite(ledPin1, lightsOn);
+  headlightOn = targetSpeed > 0;
+  taillightOn = targetSpeed < 0;
+  headlightControl(lightsOn);
 
   if (mode == 0) {
     if (directionPlus) {
