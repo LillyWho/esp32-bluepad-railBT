@@ -60,8 +60,8 @@ bool bButton = false;
 bool xButton = false;
 bool yButton = false;
 //////////////////////////////////////////////////////
-const float maxAcceleration = 1.0;  // Max rate of acceleration (m/s^2 or similar)
-const float maxDeceleration = 2.0;  // Max rate of deceleration (m/s^2 or similar)
+const float maxAcceleration = 1.0;  // Max rate of acceleration
+const float maxDeceleration = 2.0;  // Max rate of deceleration 
 const float inertia = 0.1;          // Inertia factor (higher values = slower response)
 //////////////////////////////////////////////////////
 int ADebounce = 0;
@@ -284,6 +284,10 @@ void sendMuComms() {
   }
 }
 void headlightControl(bool enable) {
+  if (!multiHeader) {
+    digitalWrite(ledPin1, enable);
+    return;
+  }
   if (!enable) {
     digitalWrite(ledPin1, false);
     digitalWrite(ledPin2, false);
