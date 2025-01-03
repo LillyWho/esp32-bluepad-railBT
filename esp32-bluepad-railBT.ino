@@ -5,14 +5,28 @@ ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 #include <smooth.h>
 #define nbReadings
 smoother analogSmooth;
+//#include <MotorInertiaControl.h>
 
+
+/////////////////////////////////////////////////////
+// CHANGEME: Enable this if you want to enable the automatic pairing feature!
+const bool multiHeader = true;
+
+
+#ifdef multiHeader
+#include <HardwareSerial.h>
+
+#endif
+HardwareSerial muComms(2);
+bool head = false;
+bool setupCommsComplete = false;
+/////////////////////////////////////////////////////
 
 int mode = 0;  // mode 0 = absolute analogue, mode 1 = real analogue throttle mode, mode 2 = d-pad incremental mode
 bool directionPlus = false;
 bool directionMinus = false;
 float direction = 0;
 int targetSpeed = 0;
-int speed = 0;
 int maxSpeed = 255;
 long interval = 0;
 long lastPuff = 0;
@@ -23,7 +37,7 @@ bool emergencyBrake = false;
 bool steamerEnabled = false;
 long lastTime = 0;
 long deltaTime = 0;
-
+int speed = 0;
 //////////////////////////////////////////////////////
 /////  The Stadia Gamepad returns the Y axis forwad on the sticks as negative, which is counter-intuitive. So let's invert it if need be.
 const bool invertLeftStick = true;
@@ -60,13 +74,21 @@ long UpDebounce = 0;
 long DownDebounce = 0;
 long throttleTick = 0;
 //////////////////////////////////////////////////////
-const int ledPin1 = 19;
-const int motorPin1 = 16;
-const int motorPin2 = 17;
-const int speedPin = 18;
+
+const int ledPin1 = 5;
+const int ledPin2 = 4;
+const int motorPin1 = 0;
+const int motorPin2 = 15;
+const int speedPin = 2;
+bool headlightOn = false;
+bool taillightOn = false;
 //////////////////////////////////////////////////////
 const int throttleInterval = 50;  //throttle repeat in ms, change according to your preference
 const int throttleSteps = 4;
+//////////////////////////////////////////////////////
+
+
+
 //////////////////////////////////////////////////////
 int invertAxes(int input) {
   input = input * -1;
@@ -219,13 +241,94 @@ void processControllers() {
       if (myController->isGamepad()) {
         processGamepad(myController);
         dpad(myController);
+        if (multiHeader) {
+          head = true;
+        }
       } else {
         Serial.println("Unsupported controller");
       }
     }
   }
 }
+unsigned long lastMessageTime = 0;
+const unsigned long timeout = 500;  // 1 second timeout
+void setupMuComms() {
+  String response = "";  // Initialize response as an empty string
 
+  // Check if there is data available in the serial buffer
+  if (muComms.available() > 0) {
+    response = muComms.readStringUntil('\n');  // Read the response until a newline
+  }
+
+  // Compare the response with "ack"
+  if (head && response != "ACK") {
+    muComms.println("RING");  // Send the RING message
+  } else if (head && response == "ACK") {
+    setupCommsComplete = true;
+    return;
+  }
+}
+void sendMuComms() {
+  String response = "";  // Initialize response as an empty string
+  String msg = "";
+  if (muComms.available() > 0) {
+    response = muComms.readStringUntil('\n');  // Read the response until a newline
+    if (response != "") { lastMessageTime = millis(); }
+  }
+
+  String requiredResponse = "speed" + String(targetSpeed) + "ACK";
+  if (response != requiredResponse) {
+    msg = "speed" + String(targetSpeed);
+    muComms.println(msg);
+  }
+}
+void headlightControl(bool enable) {
+  if (!enable) {
+    digitalWrite(ledPin1, false);
+    digitalWrite(ledPin2, false);
+  } else {
+    if (taillightOn) {
+      digitalWrite(ledPin1,false);
+      digitalWrite(ledPin2,true);
+    } else {
+      digitalWrite(ledPin1,true);
+      digitalWrite(ledPin1,false);
+    }
+  }
+}
+void receiveMuComms() {
+  String response = "";  // Initialize response as an empty string
+  String msg = "";
+  int speedNum = 0;
+  bool lightMsg = false;
+  bool speedMsg = false;
+
+  if (muComms.available() > 0) {
+    msg = muComms.readStringUntil('\n');  // Read the response until a newline
+  }
+  if (msg != "") {
+    String speedDeLimiter = "SPEED";
+    String lightDeLimiter = "LIGHT";
+    lightMsg = msg.indexOf(lightDeLimiter) != -1;
+    speedMsg = msg.indexOf(speedDeLimiter) != -1;
+
+    if (lightMsg) {
+      bool onOff;
+      String command = msg.substring(lightDeLimiter.length(), msg.length());
+      headlightControl(command);
+    } else if (speedMsg) {
+      String command = msg.substring(speedDeLimiter.length(), msg.length());
+      response = msg + "ACK";
+      muComms.println(response);
+      int speedCommand = command.toInt();
+      targetSpeed = abs(speedCommand);
+      analogWrite(speedPin, targetSpeed);
+      digitalWrite(motorPin1, speed < 0);
+      taillightOn = speed < 0;
+      digitalWrite(motorPin2, speed > 0);
+    }
+  }
+}
 void setupBT() {
   Serial.begin(115200);
   Serial.printf("Firmware: %s\n", BP32.firmwareVersion());
@@ -252,13 +355,14 @@ void setupBT() {
 
 // Arduino setup function. Runs in CPU 1
 void setup() {
+  muComms.begin(115200);
   setupBT();
   pinMode(motorPin1, OUTPUT);
   pinMode(motorPin2, OUTPUT);
   pinMode(speedPin, OUTPUT);
   pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
 }
-
 
 void mode0() {
   if (mode != 0) { return; }
@@ -415,9 +519,19 @@ void loop() {
 
 
 
-
-  //Serial.println(targetSpeed);
-  Serial.println(targetSpeed);
+  if (!head) {
+    if (!setupCommsComplete) {
+      setupMuComms();
+    } else {
+      receiveMuComms();
+    }
+    return;
+  } else {
+    if (!setupCommsComplete) {
+      setupMuComms();
+      return;
+    }
+  }
   directionPlus = direction > 0;
   directionMinus = direction < 0;
   mode0();
