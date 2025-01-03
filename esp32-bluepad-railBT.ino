@@ -381,6 +381,18 @@ void mode0() {
     return;
   }
   targetSpeed = lerp(yAxisL, -509, 509, -255, 255);
+  if (directionPlus) {
+
+    digitalWrite(motorPin1, HIGH);
+    digitalWrite(motorPin2, LOW);
+  } else if (directionMinus) {
+
+    digitalWrite(motorPin1, LOW);
+    digitalWrite(motorPin2, HIGH);
+  } else {
+    digitalWrite(motorPin1, LOW);
+    digitalWrite(motorPin2, LOW);
+  }
 }
 void mode1() {
 
@@ -402,6 +414,16 @@ void mode1() {
   } else if (direction != 0 && millis() - throttleTick > throttleInterval && ((directionPlus && targetSpeed < maxSpeed) || (directionMinus && targetSpeed > (maxSpeed * -1)))) {
     throttleTick = millis();
     targetSpeed = constrain(targetSpeed + directionLerp, maxSpeed * -1, maxSpeed);
+  }
+  if (targetSpeed > 0) {
+    digitalWrite(motorPin1, HIGH);
+    digitalWrite(motorPin2, LOW);
+  } else if (targetSpeed < 0) {
+    digitalWrite(motorPin1, LOW);
+    digitalWrite(motorPin2, HIGH);
+  } else if (targetSpeed == 0) {
+    digitalWrite(motorPin1, LOW);
+    digitalWrite(motorPin2, LOW);
   }
 }
 void mode2() {
@@ -429,6 +451,16 @@ void mode2() {
   }
   if (!dpadUp) { UpDebounce = 0; }
   if (!dpadDown) { DownDebounce = 0; }
+  if (targetSpeed > 0) {
+    digitalWrite(motorPin1, HIGH);
+    digitalWrite(motorPin2, LOW);
+  } else if (targetSpeed < 0) {
+    digitalWrite(motorPin1, LOW);
+    digitalWrite(motorPin2, HIGH);
+  } else if (targetSpeed == 0) {
+    digitalWrite(motorPin1, LOW);
+    digitalWrite(motorPin2, LOW);
+  }
 }
 void modeUp() {
   if (mode == 2) return;
@@ -552,40 +584,7 @@ void loop() {
   taillightOn = targetSpeed < 0;
   headlightControl(lightsOn);
 
-  if (mode == 0) {
-    if (directionPlus) {
-
-      digitalWrite(motorPin1, HIGH);
-      digitalWrite(motorPin2, LOW);
-    } else if (directionMinus) {
-
-      digitalWrite(motorPin1, LOW);
-      digitalWrite(motorPin2, HIGH);
-    } else {
-      digitalWrite(motorPin1, LOW);
-      digitalWrite(motorPin2, LOW);
-    }
-
-  } else if (mode == 1 || mode == 2) {
-    if (targetSpeed > 0) {
-      digitalWrite(motorPin1, HIGH);
-      digitalWrite(motorPin2, LOW);
-    } else if (targetSpeed < 0) {
-      digitalWrite(motorPin1, LOW);
-      digitalWrite(motorPin2, HIGH);
-    } else if (targetSpeed == 0) {
-      digitalWrite(motorPin1, LOW);
-      digitalWrite(motorPin2, LOW);
-    }
-  } else if (mode == 2) {
-    if (targetSpeed > 0) {
-      digitalWrite(motorPin1, HIGH);
-      digitalWrite(motorPin2, LOW);
-    } else if (targetSpeed < 0) {
-      digitalWrite(motorPin1, LOW);
-      digitalWrite(motorPin2, HIGH);
-    }
-  }
+  
   analogWrite(speedPin, abs(targetSpeed));
   vTaskDelay(1);
 }
