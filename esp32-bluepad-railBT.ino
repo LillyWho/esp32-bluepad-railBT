@@ -310,7 +310,7 @@ void headlightControl(bool enable) {
     } else if (headlightOn) {
       lastHeadlightState = "head";
       digitalWrite(ledPin1, true);
-      digitalWrite(ledPin1, false);
+      digitalWrite(ledPin2, false);
     } else if (lastHeadlightState == "tail" && !taillightOn) {
       digitalWrite(ledPin1, false);
       digitalWrite(ledPin2, true);
@@ -479,11 +479,11 @@ void mode2() {
 }
 void modeUp() {
   if (mode == 2) return;
-  mode = mode + 1;
+  mode = min(mode + 1, 2); # Increment Mode, but make sure it cannot exceed 2
 }
 void modeDown() {
   if (mode == 0) return;
-  mode = mode - 1;
+  mode = max(mode - 1, 0); # Decrement Mode, but make sure it cannot go below 0
 }
 
 void B(bool pressed) {
@@ -541,9 +541,7 @@ void Start(bool pressed) {
   }
   if (StartDebounce == 0) {
     StartDebounce = millis();
-    if (mode < 3) {
-      mode = mode + 1;
-    }
+      mode = min(mode + 1, 2); # Increment Mode, but make sure it cannot exceed 2
   }
 }
 void Select(bool pressed) {
@@ -555,7 +553,7 @@ void Select(bool pressed) {
   if (SelectDebounce == 0) {
     SelectDebounce = millis();
     if (mode > 0) {
-      mode = mode - 1;
+      mode = max(mode - 1, 0); # Decrement Mode, but make sure it cannot go below 0
     }
   }
 }
