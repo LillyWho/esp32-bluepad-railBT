@@ -7,7 +7,15 @@ ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 smoother analogSmooth;
 //#include <MotorInertiaControl.h>
 
+//#define supportSound = true
 
+#ifdef supportSound
+#include <wavTrigger.h>
+#define __WT_USE_ALTSOFTSERIAL__
+//#define __WT_USE_SERIAL1__
+//#define __WT_USE_SERIAL2__
+//#define __WT_USE_SERIAL3__
+#endif
 /////////////////////////////////////////////////////
 // CHANGEME: Enable this if you want to enable the automatic pairing feature!
 const bool multiHeader = true;
@@ -61,7 +69,7 @@ bool xButton = false;
 bool yButton = false;
 //////////////////////////////////////////////////////
 const float maxAcceleration = 1.0;  // Max rate of acceleration
-const float maxDeceleration = 2.0;  // Max rate of deceleration 
+const float maxDeceleration = 2.0;  // Max rate of deceleration
 const float inertia = 0.1;          // Inertia factor (higher values = slower response)
 //////////////////////////////////////////////////////
 int ADebounce = 0;
@@ -128,7 +136,10 @@ float lerp(float input, float inMin, float inMax, float outMin, float outMax) {
 int abs(int x) {
   return (x < 0) ? -x : x;
 }
-
+float easeInOutSine(float t, float b, float c, float d)
+{
+    return -c/2 * (cos(M_PI*t/d) - 1) + b;
+}
 // This callback gets called any time a new gamepad is connected.
 // dpadUp to 4 gamepads can be connected at the same time.
 void onConnectedController(ControllerPtr ctl) {
@@ -588,7 +599,7 @@ void loop() {
   taillightOn = targetSpeed < 0;
   headlightControl(lightsOn);
 
-  
+
   analogWrite(speedPin, abs(targetSpeed));
   vTaskDelay(1);
 }
