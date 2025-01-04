@@ -479,11 +479,11 @@ void mode2() {
 }
 void modeUp() {
   if (mode == 2) return;
-  mode = min(mode + 1, 2); # Increment Mode, but make sure it cannot exceed 2
+  mode = min(mode + 1, 2); // Increment Mode, but make sure it cannot exceed 2
 }
 void modeDown() {
   if (mode == 0) return;
-  mode = max(mode - 1, 0); # Decrement Mode, but make sure it cannot go below 0
+  mode = max(mode - 1, 0); // Decrement Mode, but make sure it cannot go below 0
 }
 
 void B(bool pressed) {
@@ -541,7 +541,7 @@ void Start(bool pressed) {
   }
   if (StartDebounce == 0) {
     StartDebounce = millis();
-      mode = min(mode + 1, 2); # Increment Mode, but make sure it cannot exceed 2
+      mode = min(mode + 1, 2); // Increment Mode, but make sure it cannot exceed 2
   }
 }
 void Select(bool pressed) {
@@ -553,7 +553,7 @@ void Select(bool pressed) {
   if (SelectDebounce == 0) {
     SelectDebounce = millis();
     if (mode > 0) {
-      mode = max(mode - 1, 0); # Decrement Mode, but make sure it cannot go below 0
+      mode = max(mode - 1, 0); // Decrement Mode, but make sure it cannot go below 0
     }
   }
 }
