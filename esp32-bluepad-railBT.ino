@@ -155,9 +155,8 @@ float lerp(float input, float inMin, float inMax, float outMin, float outMax) {
 int abs(int x) {
   return (x < 0) ? -x : x;
 }
-float easeInOutSine(float t, float b, float c, float d)
-{
-    return -c/2 * (cos(M_PI*t/d) - 1) + b;
+float easeInOutSine(float t, float b, float c, float d) {
+  return -c / 2 * (cos(M_PI * t / d) - 1) + b;
 }
 // This callback gets called any time a new gamepad is connected.
 // dpadUp to 4 gamepads can be connected at the same time.
@@ -367,12 +366,10 @@ void receiveMuComms() {
       response = msg + "ACK";
       muComms.println(response);
       int speedCommand = command.toInt();
-      targetSpeed = abs(speedCommand);
-      analogWrite(speedPin, targetSpeed);
-      digitalWrite(motorPin1, speed < 0);
-      headlightOn = speed > 0;
-      taillightOn = speed < 0;
-      digitalWrite(motorPin2, speed > 0);
+      float pwm = motor.positivePwm(speedCommand);
+      motorControl(pwm);
+      headlightOn = speedCommand > 0;
+      taillightOn = speedCommand < 0;
     }
   }
 }
@@ -418,7 +415,9 @@ void mode0() {
     return;
   }
   targetSpeed = lerp(yAxisL, -509, 509, -255, 255);
-  motorControl(targetSpeed);
+  float pwm = motor.positivePwm(targetSpeed);
+  motorControl(pwm);
+  
 }
 void mode1() {
 
@@ -441,7 +440,8 @@ void mode1() {
     throttleTick = millis();
     targetSpeed = constrain(targetSpeed + directionLerp, maxSpeed * -1, maxSpeed);
   }
-  motorControl(targetSpeed);
+  float pwm = motor.positivePwm(targetSpeed);
+  motorControl(pwm);
 }
 void mode2() {
   if (mode != 2) { return; }
@@ -468,15 +468,16 @@ void mode2() {
   }
   if (!dpadUp) { UpDebounce = 0; }
   if (!dpadDown) { DownDebounce = 0; }
-  motorControl(targetSpeed);
+  float pwm = motor.positivePwm(targetSpeed);
+  motorControl(pwm);
 }
 void modeUp() {
   if (mode == 2) return;
-  mode = min(mode + 1, 2); // Increment Mode, but make sure it cannot exceed 2
+  mode = min(mode + 1, 2);  // Increment Mode, but make sure it cannot exceed 2
 }
 void modeDown() {
   if (mode == 0) return;
-  mode = max(mode - 1, 0); // Decrement Mode, but make sure it cannot go below 0
+  mode = max(mode - 1, 0);  // Decrement Mode, but make sure it cannot go below 0
 }
 
 void B(bool pressed) {
@@ -534,7 +535,7 @@ void Start(bool pressed) {
   }
   if (StartDebounce == 0) {
     StartDebounce = millis();
-      mode = min(mode + 1, 2); // Increment Mode, but make sure it cannot exceed 2
+    mode = min(mode + 1, 2);  // Increment Mode, but make sure it cannot exceed 2
   }
 }
 void Select(bool pressed) {
@@ -546,7 +547,7 @@ void Select(bool pressed) {
   if (SelectDebounce == 0) {
     SelectDebounce = millis();
     if (mode > 0) {
-      mode = max(mode - 1, 0); // Decrement Mode, but make sure it cannot go below 0
+      mode = max(mode - 1, 0);  // Decrement Mode, but make sure it cannot go below 0
     }
   }
 }
