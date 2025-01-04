@@ -6,7 +6,7 @@ ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 #define nbReadings
 smoother analogSmooth;
 //#include <MotorInertiaControl.h>
-
+#include <DRV8874.h>
 //#define supportSound = true
 
 #ifdef supportSound
@@ -85,7 +85,7 @@ long throttleTick = 0;
 
 const int ledPin1 = 5;
 const int ledPin2 = 4;
-const int motorPin1 = 0;
+const int motorPin1 = 14;
 const int motorPin2 = 15;
 const int speedPin = 2;
 bool headlightOn = false;
@@ -96,7 +96,7 @@ const int throttleInterval = 50;  //throttle repeat in ms, change according to y
 const int throttleSteps = 4;
 //////////////////////////////////////////////////////
 
-
+DRV8874 motor(motorPin1, motorPin2);
 
 //////////////////////////////////////////////////////
 int invertAxes(int input) {
@@ -128,7 +128,26 @@ void dpad(ControllerPtr ctl) {
     dpadLeft = false;
   }
 }
-
+void motorControl(float input) {
+  float prevInput = 0;
+  if (prevInput != input && input > 0) {
+    if (prevInput > input) {
+      motor.brakeForward(input);
+    } else if (prevInput < input) {
+      motor.forward(input);
+    }
+  } else if (prevInput != input && input < 0) {
+    if (prevInput < input) {
+      motor.brakeReverse(input);
+    } else if (prevInput > input) {
+      motor.reverse(input);
+    }
+  } else if (input != 0) {
+    motor.coast();
+  } else if (input == 0) {
+    motor.brakeLow();
+  }
+}
 float lerp(float input, float inMin, float inMax, float outMin, float outMax) {
   // Scale input value to the 0-1 range, then apply to the output range
   return outMin + (input - inMin) * (outMax - outMin) / (inMax - inMin);
@@ -399,18 +418,7 @@ void mode0() {
     return;
   }
   targetSpeed = lerp(yAxisL, -509, 509, -255, 255);
-  if (directionPlus) {
-
-    digitalWrite(motorPin1, HIGH);
-    digitalWrite(motorPin2, LOW);
-  } else if (directionMinus) {
-
-    digitalWrite(motorPin1, LOW);
-    digitalWrite(motorPin2, HIGH);
-  } else {
-    digitalWrite(motorPin1, LOW);
-    digitalWrite(motorPin2, LOW);
-  }
+  motorControl(targetSpeed);
 }
 void mode1() {
 
@@ -433,16 +441,7 @@ void mode1() {
     throttleTick = millis();
     targetSpeed = constrain(targetSpeed + directionLerp, maxSpeed * -1, maxSpeed);
   }
-  if (targetSpeed > 0) {
-    digitalWrite(motorPin1, HIGH);
-    digitalWrite(motorPin2, LOW);
-  } else if (targetSpeed < 0) {
-    digitalWrite(motorPin1, LOW);
-    digitalWrite(motorPin2, HIGH);
-  } else if (targetSpeed == 0) {
-    digitalWrite(motorPin1, LOW);
-    digitalWrite(motorPin2, LOW);
-  }
+  motorControl(targetSpeed);
 }
 void mode2() {
   if (mode != 2) { return; }
@@ -469,16 +468,7 @@ void mode2() {
   }
   if (!dpadUp) { UpDebounce = 0; }
   if (!dpadDown) { DownDebounce = 0; }
-  if (targetSpeed > 0) {
-    digitalWrite(motorPin1, HIGH);
-    digitalWrite(motorPin2, LOW);
-  } else if (targetSpeed < 0) {
-    digitalWrite(motorPin1, LOW);
-    digitalWrite(motorPin2, HIGH);
-  } else if (targetSpeed == 0) {
-    digitalWrite(motorPin1, LOW);
-    digitalWrite(motorPin2, LOW);
-  }
+  motorControl(targetSpeed);
 }
 void modeUp() {
   if (mode == 2) return;
