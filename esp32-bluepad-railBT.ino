@@ -278,6 +278,9 @@ void setupMuComms() {
   } else if (head && response == "ACK") {
     setupCommsComplete = true;
     return;
+  } else if (!head && response == "RING") {
+    muComms.println("ACK");
+    setupCommsComplete = true;
   }
 }
 void sendMuComms() {
