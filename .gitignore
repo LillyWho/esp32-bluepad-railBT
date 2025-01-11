@@ -1,3 +1,4 @@
 build/**
 wokwi.toml
 diagram.json
+*.lck
