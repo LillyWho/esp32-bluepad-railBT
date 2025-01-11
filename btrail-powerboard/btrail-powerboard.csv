@@ -1,0 +1,8 @@
+"Id";"Designator";"Footprint";"Quantity";"Designation";"Supplier and ref";
+1;"U2";"SOIC-8_3.9x4.9mm_P1.27mm";1;"XL1509-5.0";;;
+2;"Q1,Q2";"TO-92_Inline";2;"BC328";;;
+3;"DRV_l,DRV_r";"PinHeader_1x06_P1.00mm_Vertical";2;"Conn_01x06_Pin";;;
+4;"J1";"RJ45_Amphenol_54602-x08_Horizontal";1;"RJ45_Shielded";;;
+5;"LEDs";"PinHeader_1x04_P1.00mm_Vertical";1;"Conn_01x04_Pin";;;
+6;"ESP32";"PinHeader_1x09_P1.00mm_Vertical";1;"Conn_01x09_Pin";;;
+7;"Motor,PWR";"PinHeader_1x02_P1.00mm_Vertical";2;"Conn_01x02_Pin";;;
