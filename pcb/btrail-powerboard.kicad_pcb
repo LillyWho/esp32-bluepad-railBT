@@ -347,14 +347,14 @@
 			(layer "F.Fab")
 			(uuid "ae2d8c10-adca-4381-8c83-23feb55961aa")
 		)
-		(fp_text user "${REFERENCE}"
-			(at 0.5 1.5 -90)
+		(fp_text user "XL1509"
+			(at 0.5 1.5 270)
 			(layer "F.Fab")
 			(uuid "8593f3d0-3740-4056-b530-53da019fe0fe")
 			(effects
 				(font
-					(size 1 1)
-					(thickness 0.15)
+					(size 0.5 0.5)
+					(thickness 0.125)
 				)
 			)
 		)
