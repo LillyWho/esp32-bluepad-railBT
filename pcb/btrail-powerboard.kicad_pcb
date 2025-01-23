@@ -3900,7 +3900,7 @@
 			(justify left bottom mirror)
 		)
 	)
-	(gr_text "Rx"
+	(gr_text "Tx"
 		(at 200.4 32.4 0)
 		(layer "B.SilkS")
 		(uuid "908bd5a6-66a4-4c1a-8446-53a7a08247b4")
@@ -3948,7 +3948,7 @@
 			(justify left bottom mirror)
 		)
 	)
-	(gr_text "Rx"
+	(gr_text "Tx"
 		(at 199.4 32.4 0)
 		(layer "F.SilkS")
 		(uuid "12542f00-8ddb-4b3b-a5b5-880671c0325a")
