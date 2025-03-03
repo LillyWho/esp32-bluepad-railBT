@@ -1675,9 +1675,8 @@
 				)
 			)
 		)
-		(symbol "Transistor_BJT:BC328"
-			(pin_names
-				(offset 0) hide)
+		(symbol "Transistor_FET:IRLZ34N"
+			(pin_names hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1690,7 +1689,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "BC328"
+			(property "Value" "IRLZ34N"
 				(at 5.08 0 0)
 				(effects
 					(font
@@ -1699,7 +1698,7 @@
 					(justify left)
 				)
 			)
-			(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+			(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
 				(at 5.08 -1.905 0)
 				(effects
 					(font
@@ -1710,8 +1709,8 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "http://www.redrok.com/PNP_BC327_-45V_-800mA_0.625W_Hfe100_TO-92.pdf"
-				(at 0 0 0)
+			(property "Datasheet" "http://www.infineon.com/dgdl/irlz34npbf.pdf?fileId=5546d462533600a40153567206892720"
+				(at 5.08 -3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1720,7 +1719,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "0.8A Ic, 25V Vce, PNP Transistor, TO-92"
+			(property "Description" "30A Id, 55V Vds, 35mOhm Rds, N-Channel HEXFET Power MOSFET, TO-220AB"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1729,7 +1728,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "PNP Transistor"
+			(property "ki_keywords" "N-Channel HEXFET MOSFET Logic-Level"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1738,7 +1737,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "TO?92*"
+			(property "ki_fp_filters" "TO?220*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1747,10 +1746,10 @@
 					(hide yes)
 				)
 			)
-			(symbol "BC328_0_1"
+			(symbol "IRLZ34N_0_1"
 				(polyline
 					(pts
-						(xy 0.635 0.635) (xy 2.54 2.54)
+						(xy 0.254 0) (xy -2.54 0)
 					)
 					(stroke
 						(width 0)
@@ -1762,7 +1761,55 @@
 				)
 				(polyline
 					(pts
-						(xy 0.635 -0.635) (xy 2.54 -2.54) (xy 2.54 -2.54)
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
 					)
 					(stroke
 						(width 0)
@@ -1774,10 +1821,10 @@
 				)
 				(polyline
 					(pts
-						(xy 0.635 1.905) (xy 0.635 -1.905) (xy 0.635 -1.905)
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
 					)
 					(stroke
-						(width 0.508)
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -1786,7 +1833,19 @@
 				)
 				(polyline
 					(pts
-						(xy 2.286 -1.778) (xy 1.778 -2.286) (xy 1.27 -1.27) (xy 2.286 -1.778) (xy 2.286 -1.778)
+						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
 					)
 					(stroke
 						(width 0)
@@ -1796,9 +1855,33 @@
 						(type outline)
 					)
 				)
+				(polyline
+					(pts
+						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(circle
-					(center 1.27 0)
-					(radius 2.8194)
+					(center 1.651 0)
+					(radius 2.794)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -1807,12 +1890,34 @@
 						(type none)
 					)
 				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
 			)
-			(symbol "BC328_1_1"
-				(pin passive line
-					(at 2.54 5.08 270)
+			(symbol "IRLZ34N_1_1"
+				(pin input line
+					(at -5.08 0 0)
 					(length 2.54)
-					(name "C"
+					(name "G"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1827,10 +1932,10 @@
 						)
 					)
 				)
-				(pin input line
-					(at -5.08 0 0)
-					(length 5.715)
-					(name "B"
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1848,7 +1953,7 @@
 				(pin passive line
 					(at 2.54 -5.08 90)
 					(length 2.54)
-					(name "E"
+					(name "S"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1897,6 +2002,12 @@
 		(uuid "2d557229-013a-49c1-81ec-56e93164b4c5")
 	)
 	(junction
+		(at 33.02 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3684f119-8dc2-4954-a8fb-16ab48cea6da")
+	)
+	(junction
 		(at 63.5 158.75)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1937,6 +2048,18 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7013486f-209f-41d3-a53f-3b22eb94ba2e")
+	)
+	(junction
+		(at 52.07 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "71c2b6cd-efba-443b-a9a6-fc8bdcbd4636")
+	)
+	(junction
+		(at 66.04 181.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7fba4a6b-202a-4def-87e5-7c228ab10ca3")
 	)
 	(junction
 		(at 166.37 173.99)
@@ -2017,6 +2140,17 @@
 	)
 	(wire
 		(pts
+			(xy 33.02 90.17) (xy 38.1 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 191 99 0 1)
+		)
+		(uuid "097c913d-a121-4dde-b3d2-970a3d803376")
+	)
+	(wire
+		(pts
 			(xy 217.17 40.64) (xy 217.17 96.52)
 		)
 		(stroke
@@ -2058,6 +2192,17 @@
 	)
 	(wire
 		(pts
+			(xy 33.02 92.71) (xy 33.02 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 191 99 0 1)
+		)
+		(uuid "1939d0be-3a9a-4933-b108-afc88665df76")
+	)
+	(wire
+		(pts
 			(xy 222.25 158.75) (xy 261.62 158.75)
 		)
 		(stroke
@@ -2096,6 +2241,17 @@
 			(type default)
 		)
 		(uuid "1efc7116-50d6-4dcd-8215-55a6260b88aa")
+	)
+	(wire
+		(pts
+			(xy 52.07 92.71) (xy 52.07 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "1f995765-f4a1-4a42-8d12-e8d3691d3f75")
 	)
 	(wire
 		(pts
@@ -2387,6 +2543,17 @@
 	)
 	(wire
 		(pts
+			(xy 48.26 92.71) (xy 52.07 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "64a1d7cb-f41f-49bf-a0ed-1f3528f9ec27")
+	)
+	(wire
+		(pts
 			(xy 92.71 77.47) (xy 114.3 77.47)
 		)
 		(stroke
@@ -2450,7 +2617,7 @@
 	)
 	(wire
 		(pts
-			(xy 127 57.15) (xy 127 48.26)
+			(xy 127 48.26) (xy 127 57.15)
 		)
 		(stroke
 			(width 0)
@@ -2482,6 +2649,17 @@
 	)
 	(wire
 		(pts
+			(xy 33.02 181.61) (xy 33.02 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 191 99 0 1)
+		)
+		(uuid "7b90bf82-3a1d-44e0-a097-9cc6e8d9b83d")
+	)
+	(wire
+		(pts
 			(xy 96.52 90.17) (xy 92.71 90.17)
 		)
 		(stroke
@@ -2489,6 +2667,17 @@
 			(type default)
 		)
 		(uuid "86017646-2c88-4507-8e75-b25c3ecebdb4")
+	)
+	(wire
+		(pts
+			(xy 66.04 181.61) (xy 33.02 181.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 191 99 0 1)
+		)
+		(uuid "8781d08a-068a-4fff-9fed-8a783dc1bf63")
 	)
 	(wire
 		(pts
@@ -2610,7 +2799,7 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 82.55) (xy 52.07 158.75)
+			(xy 52.07 82.55) (xy 52.07 92.71)
 		)
 		(stroke
 			(width 0)
@@ -2629,6 +2818,17 @@
 			(color 255 252 0 1)
 		)
 		(uuid "a654beec-227e-489f-9b98-797a8407477a")
+	)
+	(wire
+		(pts
+			(xy 33.02 92.71) (xy 38.1 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 191 99 0 1)
+		)
+		(uuid "a65b2b53-bf8b-4940-97ef-43029ac20c6a")
 	)
 	(wire
 		(pts
@@ -2926,82 +3126,6 @@
 		(uuid "fec7fd82-7cd0-4926-9b49-a1ed3b0f80c8")
 	)
 	(symbol
-		(lib_id "Transistor_BJT:BC328")
-		(at 124.46 62.23 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "05835592-5fd7-4b6f-9d8c-123c74fe7e3b")
-		(property "Reference" "Q2"
-			(at 129.54 60.9599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "BC328"
-			(at 129.54 63.4999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
-			(at 129.54 64.135 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.redrok.com/PNP_BC327_-45V_-800mA_0.625W_Hfe100_TO-92.pdf"
-			(at 124.46 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Description" "0.8A Ic, 25V Vce, PNP Transistor, TO-92"
-			(at 124.46 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2ea3049d-a83a-4558-891e-3b63ad652137")
-		)
-		(pin "2"
-			(uuid "7f837da2-4f3c-44aa-9836-5094c71335cc")
-		)
-		(pin "3"
-			(uuid "fdf2f731-4b1f-44bc-8c54-b83ccbc4a4dd")
-		)
-		(instances
-			(project ""
-				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
-					(reference "Q2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:Conn_01x06_Pin")
 		(at 43.18 85.09 0)
 		(unit 1)
@@ -3011,7 +3135,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1178baf1-e67f-4caa-9a9e-238083a2bd74")
-		(property "Reference" "DRV_right1"
+		(property "Reference" "DRV8874_right1"
 			(at 43.815 74.93 0)
 			(effects
 				(font
@@ -3075,14 +3199,14 @@
 		(instances
 			(project ""
 				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
-					(reference "DRV_right1")
+					(reference "DRV8874_right1")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Transistor_BJT:BC328")
+		(lib_id "Transistor_FET:IRLZ34N")
 		(at 129.54 76.2 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3092,7 +3216,7 @@
 		(fields_autoplaced yes)
 		(uuid "27dc31d4-d8bf-4d8e-9099-c0f1a21821a3")
 		(property "Reference" "Q1"
-			(at 134.62 74.9299 0)
+			(at 135.89 74.9299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3100,8 +3224,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BC328"
-			(at 134.62 77.4699 0)
+		(property "Value" "IRLZ34N"
+			(at 135.89 77.4699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3109,7 +3233,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-92_Inline"
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
 			(at 134.62 78.105 0)
 			(effects
 				(font
@@ -3120,8 +3244,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.redrok.com/PNP_BC327_-45V_-800mA_0.625W_Hfe100_TO-92.pdf"
-			(at 129.54 76.2 0)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irf1324pbf.pdf?fileId=5546d462533600a4015355dac93318a7"
+			(at 134.62 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3130,7 +3254,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "0.8A Ic, 25V Vce, PNP Transistor, TO-92"
+		(property "Description" "INFINEON MOSFET, N-Ch 24V 195A 0,0012R, TO-220"
 			(at 129.54 76.2 0)
 			(effects
 				(font
@@ -3237,7 +3361,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "48c71ab8-5815-4b73-b8a2-ea07c39c1929")
-		(property "Reference" "Power_In1"
+		(property "Reference" "24V_In1"
 			(at 267.97 130.8099 0)
 			(effects
 				(font
@@ -3291,7 +3415,7 @@
 		(instances
 			(project ""
 				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
-					(reference "Power_In1")
+					(reference "24V_In1")
 					(unit 1)
 				)
 			)
@@ -3307,7 +3431,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5eb5bef0-23d2-4c45-b5f7-c9234d20bb59")
-		(property "Reference" "DRV_left1"
+		(property "Reference" "DRV8874_left1"
 			(at 33.655 74.93 0)
 			(effects
 				(font
@@ -3371,7 +3495,7 @@
 		(instances
 			(project ""
 				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
-					(reference "DRV_left1")
+					(reference "DRV8874_left1")
 					(unit 1)
 				)
 			)
@@ -3525,7 +3649,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7f339287-b267-43c3-9ab2-d1b69f407445")
-		(property "Reference" "LED1_LED2"
+		(property "Reference" "LED1/LED2"
 			(at 55.245 43.18 0)
 			(effects
 				(font
@@ -3583,7 +3707,7 @@
 		(instances
 			(project ""
 				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
-					(reference "LED1_LED2")
+					(reference "LED1/LED2")
 					(unit 1)
 				)
 			)
@@ -3742,6 +3866,82 @@
 			(project ""
 				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
 					(reference "GND2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLZ34N")
+		(at 124.46 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "aeee492f-31e4-4e35-985e-15ada1f0da0d")
+		(property "Reference" "Q2"
+			(at 130.81 60.9599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRLZ34N"
+			(at 130.81 63.4999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+			(at 129.54 64.135 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irf1324pbf.pdf?fileId=5546d462533600a4015355dac93318a7"
+			(at 129.54 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "INFINEON MOSFET, N-Ch 24V 195A 0,0012R, TO-220"
+			(at 124.46 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c7bb49a3-eb61-4e1f-aad2-f650233af3d6")
+		)
+		(pin "1"
+			(uuid "812eaaad-61c4-4cf0-9879-74906b124286")
+		)
+		(pin "3"
+			(uuid "b5db6ed1-9bbc-454e-9c4c-0cae318908b5")
+		)
+		(instances
+			(project "btrail-powerboard"
+				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
+					(reference "Q2")
 					(unit 1)
 				)
 			)
