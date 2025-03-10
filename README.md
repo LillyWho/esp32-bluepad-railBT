@@ -34,5 +34,6 @@ Please note that all button mappings that aren't A/B, X/Y may be specific to the
 - Sound via the WAVTrigger board
 - Library for driving an ultrasonic humidifier board in sync with wheel spin to simulate steam exhaust synced to cylinder beats
 - button mapping swappable via libraries
-## Demo video
+- hall effect sensor support for inductive train control, triggering a SPAD on existing DCC layouts
+## Demo video (outdated version)
 https://www.youtube.com/watch?v=-wW9WL53EOc
