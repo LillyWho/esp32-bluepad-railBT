@@ -30,7 +30,7 @@ Please note that all button mappings that aren't A/B, X/Y may be specific to the
 
 ## Planned features
 - MU with more than one extra engine
-- Move MU support to CANBus for multi engine support (maybe?)
+- Move MU support to CANBus or other applicable protocol for multi engine support
 - Inertia simulation
 - Sound via the WAVTrigger board
 - Library for driving an ultrasonic humidifier board in sync with wheel spin to simulate steam exhaust synced to cylinder beats
