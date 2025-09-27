@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+	{
+		"id": "led1",
+		"type": "wokwi-led",
+		"left": 320,
+		"top": 80,
+		"attrs": {
+			"color": "green"
+		}
+	},
+	{
+		"id": "motor",
+		"type": "wokwi-servo",
+		"left": 140,
+		"top": 300,
+		"attrs": {
+			"color": "green"
+		}
+	},
+	{
+		"id": "esp1",
+		"type": "board-esp32-devkit-c-v4",
+		"left": 140,
+		"top": 50,
+		"attrs": {
+			"color": "green"
+		}
+	}
+  ],
+  "connections": [
+	["led1:A", "esp1:19", "green", ["v5", "h0", "*", "v0", "h20"]],
+	["motor:GND", "esp1:GND.1", "black", ["v0", "h-10", "*", "v10", "h-15"]],
+	["motor:V+", "esp1:5V", "red", ["v0", "h-20", "*", "v0", "h-15"]],
+	["motor:PWM", "esp1:18", "orange", ["v100", "h200", "*", "v0", "h10"]],
+	["led1:C", "esp1:GND.2", "green", ["v10", "h-10", "*", "v0", "h0"]]
+  ]
+}

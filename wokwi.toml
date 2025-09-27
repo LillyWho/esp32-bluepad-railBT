@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build\esp32-bluepad32.esp32.esp32c3\esp32-bluepad-railBT.ino.bin'
+elf = 'build\esp32-bluepad32.esp32.esp32c3\esp32-bluepad-railBT.ino.elf'

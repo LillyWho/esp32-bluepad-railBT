@@ -2,3 +2,11 @@ build/**
 wokwi.toml
 diagram.json
 *.lck
+pcb/railbt-breakout/railbt-breakout-backups/**
+pcb/railbt-breakout/railbt-breakout-backups
+pcb/railbt-breakout/railbt-breakout-backups**/
+pcb/fp-info-cache
+pcb/btrail-powerboard-backups
+pcb/btrail-powerboard-backups**/
+pcb/btrail-powerboard-backups/**
+"#auto_saved_files#"
