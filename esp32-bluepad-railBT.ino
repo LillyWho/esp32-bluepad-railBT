@@ -13,11 +13,11 @@ ControllerPtr myControllers[BP32_MAX_GAMEPADS];
 // input. Please install the library using the Arduino IDE library manager. This
 // project uses https://github.com/luisllamasbinaburo/Arduino-Interpolation/ .
 // Please install the library using the Arduino IDE library manager.
-#define enableAxisSmoothing                                                    \
-  true // CHANGEME: Set this to true or false depending on whether you want to
-       // apply smoothing to the joysticks for less erratic output. This depends
-       // on your gamepad and might improve or worsen the subjective feel of the
-       // sticks.
+#define enableAxisSmoothing \
+  true  // CHANGEME: Set this to true or false depending on whether you want to \
+        // apply smoothing to the joysticks for less erratic output. This depends \
+        // on your gamepad and might improve or worsen the subjective feel of the \
+        // sticks.
 #ifdef enableAxisSmoothing
 #include <smooth.h>
 #define nbReadings
@@ -26,7 +26,7 @@ smoother analogSmooth;
 // **********************************************************************************
 #include <InterpolationLib.h>
 
-#include "include/cvars.h" // CHANGEME: Edit this file in the sketch's folder to customise your engine's behaviour like you would a DCC decoder!
+#include "include/cvars.h"  // CHANGEME: Edit this file in the sketch's folder to customise your engine's behaviour like you would a DCC decoder!
 
 #define supportSound true
 
@@ -43,16 +43,16 @@ smoother analogSmooth;
 #define multiHeader true
 
 #ifdef multiHeader
-#include <HardwareSerial.h>
-HardwareSerial muComms(2); // use UART port 2 for MU mode
+//#include <HardwareSerial.h>
+HardwareSerial muComms = Serial2;  // use UART port 2 for MU mode
 bool head = false;
 bool setupCommsComplete = false;
 #endif
 
 /////////////////////////////////////////////////////
 
-int mode = 0; // mode 0 = absolute analogue, mode 1 = real analogue throttle
-              // mode, mode 2 = d-pad incremental mode
+int mode = 0;  // mode 0 = absolute analogue, mode 1 = real analogue throttle
+               // mode, mode 2 = d-pad incremental mode
 bool directionPlus = false;
 bool directionMinus = false;
 float direction = 0;
@@ -92,9 +92,9 @@ bool bButton = false;
 bool xButton = false;
 bool yButton = false;
 //////////////////////////////////////////////////////
-const float maxAcceleration = 1.0; // Max rate of acceleration
-const float maxDeceleration = 2.0; // Max rate of deceleration
-const float inertia = 0.1; // Inertia factor (higher values = slower response)
+const float maxAcceleration = 1.0;  // Max rate of acceleration
+const float maxDeceleration = 2.0;  // Max rate of deceleration
+const float inertia = 0.1;          // Inertia factor (higher values = slower response)
 //////////////////////////////////////////////////////
 int ADebounce = 0;
 int BDebounce = 0;
@@ -117,7 +117,7 @@ bool taillightOn = false;
 String lastHeadlightState = "off";
 //////////////////////////////////////////////////////
 const int throttleInterval =
-    50; // throttle repeat in ms, change according to your preference
+  50;  // throttle repeat in ms, change according to your preference
 const int throttleSteps = 4;
 //////////////////////////////////////////////////////
 
@@ -129,13 +129,13 @@ int invertAxes(int input) {
   return input;
 }
 
-double speedSteps[] = {0, 50, 100};
-double throttleIncSteps[] = {0, 50, 100};
+double speedSteps[] = { 0, 50, 100 };
+double throttleIncSteps[] = { 0, 50, 100 };
 const int increments = 3;
 
 double smoothThrottle(double throttleInput) {
   static double previousInput = 0;
-  std::array<double, 2> tempSpeedSteps; // Use double for type compatibility
+  std::array<double, 2> tempSpeedSteps;  // Use double for type compatibility
 
   /*if (throttleInput != previousInput) {
       if (throttleInput > previousInput) {
@@ -198,7 +198,9 @@ float lerp(float input, float inMin, float inMax, float outMin, float outMax) {
   // Scale input value to the 0-1 range, then apply to the output range
   return outMin + (input - inMin) * (outMax - outMin) / (inMax - inMin);
 }
-int abs(int x) { return (x < 0) ? -x : x; }
+int abs(int x) {
+  return (x < 0) ? -x : x;
+}
 
 // This callback gets called any time a new gamepad is connected.
 // dpadUp to 4 gamepads can be connected at the same time.
@@ -220,7 +222,7 @@ void onConnectedController(ControllerPtr ctl) {
   }
   if (!foundEmptySlot) {
     Serial.println(
-        "CALLBACK: Controller connected, but could not find empty slot");
+      "CALLBACK: Controller connected, but could not find empty slot");
   }
 }
 
@@ -238,31 +240,31 @@ void onDisconnectedController(ControllerPtr ctl) {
 
   if (!foundController) {
     Serial.println(
-        "CALLBACK: Controller disconnected, but not found in myControllers");
+      "CALLBACK: Controller disconnected, but not found in myControllers");
   }
 }
 
 void dumpGamepad(ControllerPtr ctl) {
   Serial.printf(
-      "idx=%d, dpad: 0x%02x, buttons: 0x%04x, axis L: %4d, %4d, axis R: %4d, "
-      "%4d, brake: %4d, throttle: %4d, "
-      "misc: 0x%02x, gyro x:%6d y:%6d z:%6d, accel x:%6d y:%6d z:%6d\n",
-      ctl->index(),       // Controller Index
-      ctl->dpad(),        // D-pad
-      ctl->buttons(),     // bitmask of pressed buttons
-      ctl->axisX(),       // (-511 - 512) dpadLeft X Axis
-      ctl->axisY(),       // (-511 - 512) dpadLeft Y axis
-      ctl->axisRX(),      // (-511 - 512) dpadRight X axis
-      ctl->axisRY(),      // (-511 - 512) dpadRight Y axis
-      ctl->brake(),       // (0 - 1023): brake button
-      ctl->throttle(),    // (0 - 1023): throttle (AKA gas) button
-      ctl->miscButtons(), // bitmask of pressed "misc" buttons
-      ctl->gyroX(),       // Gyro X
-      ctl->gyroY(),       // Gyro Y
-      ctl->gyroZ(),       // Gyro Z
-      ctl->accelX(),      // Accelerometer X
-      ctl->accelY(),      // Accelerometer Y
-      ctl->accelZ()       // Accelerometer Z
+    "idx=%d, dpad: 0x%02x, buttons: 0x%04x, axis L: %4d, %4d, axis R: %4d, "
+    "%4d, brake: %4d, throttle: %4d, "
+    "misc: 0x%02x, gyro x:%6d y:%6d z:%6d, accel x:%6d y:%6d z:%6d\n",
+    ctl->index(),        // Controller Index
+    ctl->dpad(),         // D-pad
+    ctl->buttons(),      // bitmask of pressed buttons
+    ctl->axisX(),        // (-511 - 512) dpadLeft X Axis
+    ctl->axisY(),        // (-511 - 512) dpadLeft Y axis
+    ctl->axisRX(),       // (-511 - 512) dpadRight X axis
+    ctl->axisRY(),       // (-511 - 512) dpadRight Y axis
+    ctl->brake(),        // (0 - 1023): brake button
+    ctl->throttle(),     // (0 - 1023): throttle (AKA gas) button
+    ctl->miscButtons(),  // bitmask of pressed "misc" buttons
+    ctl->gyroX(),        // Gyro X
+    ctl->gyroY(),        // Gyro Y
+    ctl->gyroZ(),        // Gyro Z
+    ctl->accelX(),       // Accelerometer X
+    ctl->accelY(),       // Accelerometer Y
+    ctl->accelZ()        // Accelerometer Z
   );
 }
 
@@ -313,8 +315,7 @@ void processGamepad(ControllerPtr ctl) {
 
 void processControllers() {
   for (auto myController : myControllers) {
-    if (myController && myController->isConnected() &&
-        myController->hasData()) {
+    if (myController && myController->isConnected() && myController->hasData()) {
       if (myController->isGamepad()) {
         processGamepad(myController);
         dpad(myController);
@@ -331,20 +332,20 @@ void processControllers() {
 }
 #ifdef multiHeader
 unsigned long lastMessageTime = 0;
-const unsigned long timeout = 500; // 5 second timeout
+const unsigned long timeout = 500;  // 5 second timeout
 
 void setupMuComms() {
-  String response = ""; // Initialize response as an empty string
+  String response = "";  // Initialize response as an empty string
 
   // Check if there is data available in the serial buffer
   if (muComms.available() > 0) {
     response =
-        muComms.readStringUntil('\n'); // Read the response until a newline
+      muComms.readStringUntil('\n');  // Read the response until a newline
   }
 
   // Compare the response with "ack"
   if (head && response != "ACK") {
-    muComms.println("RING"); // Send the RING message
+    muComms.println("RING");  // Send the RING message
   } else if (head && response == "ACK") {
     setupCommsComplete = true;
     return;
@@ -354,11 +355,11 @@ void setupMuComms() {
   }
 }
 void sendMuComms() {
-  String response = ""; // Initialize response as an empty string
+  String response = "";  // Initialize response as an empty string
   String msg = "";
   if (muComms.available() > 0) {
     response =
-        muComms.readStringUntil('\n'); // Read the response until a newline
+      muComms.readStringUntil('\n');  // Read the response until a newline
     if (response != "") {
       lastMessageTime = millis();
     }
@@ -371,14 +372,14 @@ void sendMuComms() {
   }
 }
 void receiveMuComms() {
-  String response = ""; // Initialize response as an empty string
+  String response = "";  // Initialize response as an empty string
   String msg = "";
   int speedNum = 0;
   bool lightMsg = false;
   bool speedMsg = false;
 
   if (muComms.available() > 0) {
-    msg = muComms.readStringUntil('\n'); // Read the response until a newline
+    msg = muComms.readStringUntil('\n');  // Read the response until a newline
   }
   if (msg != "") {
     String speedDeLimiter = "SPEED";
@@ -485,7 +486,7 @@ void mode1() {
 
   if (mode != 1) {
     return;
-  } // quit if we're not in mode 1
+  }  // quit if we're not in mode 1
   float directionLerp = lerp(yAxisL, -509, 509, -throttleSteps, throttleSteps);
   // Serial.println(directionLerp);
   // just brake if we hit the panic button
@@ -496,16 +497,14 @@ void mode1() {
   if (targetSpeed == maxSpeed || targetSpeed == (maxSpeed * (-1))) {
     throttleTick = 0;
     return;
-  } // reset tick variable, write to motor and exit
+  }  // reset tick variable, write to motor and exit
 
   if (direction == 0) {
     throttleTick = 0;
-  } else if (direction != 0 && millis() - throttleTick > throttleInterval &&
-             ((directionPlus && targetSpeed < maxSpeed) ||
-              (directionMinus && targetSpeed > (maxSpeed * -1)))) {
+  } else if (direction != 0 && millis() - throttleTick > throttleInterval && ((directionPlus && targetSpeed < maxSpeed) || (directionMinus && targetSpeed > (maxSpeed * -1)))) {
     throttleTick = millis();
     targetSpeed =
-        constrain(targetSpeed + directionLerp, maxSpeed * -1, maxSpeed);
+      constrain(targetSpeed + directionLerp, maxSpeed * -1, maxSpeed);
   }
   float pwm = motor.positivePwm(targetSpeed);
   motorControl(pwm);
@@ -547,12 +546,12 @@ void mode2() {
 void modeUp() {
   if (mode == 2)
     return;
-  mode = min(mode + 1, 2); // Increment Mode, but make sure it cannot exceed 2
+  mode = min(mode + 1, 2);  // Increment Mode, but make sure it cannot exceed 2
 }
 void modeDown() {
   if (mode == 0)
     return;
-  mode = max(mode - 1, 0); // Decrement Mode, but make sure it cannot go below 0
+  mode = max(mode - 1, 0);  // Decrement Mode, but make sure it cannot go below 0
 }
 
 void B(bool pressed) {
@@ -611,7 +610,7 @@ void Start(bool pressed) {
   }
   if (StartDebounce == 0) {
     StartDebounce = millis();
-    mode = min(mode + 1, 2); // Increment Mode, but make sure it cannot exceed 2
+    mode = min(mode + 1, 2);  // Increment Mode, but make sure it cannot exceed 2
   }
 }
 void Select(bool pressed) {
@@ -624,7 +623,7 @@ void Select(bool pressed) {
     SelectDebounce = millis();
     if (mode > 0) {
       mode = max(mode - 1,
-                 0); // Decrement Mode, but make sure it cannot go below 0
+                 0);  // Decrement Mode, but make sure it cannot go below 0
     }
   }
 }
@@ -671,12 +670,12 @@ void loop() {
 }
 // Ease-out acceleration function (starts fast, then slows down)
 float easeOut(float t) {
-  return 1 - pow(1 - t, 3); // Ease-out cubic function
+  return 1 - pow(1 - t, 3);  // Ease-out cubic function
 }
 
 // Ease-in deceleration function (starts slow, then speeds up)
 float easeIn(float t) {
-  return pow(t, 3); // Ease-in cubic function
+  return pow(t, 3);  // Ease-in cubic function
 }
 void inertiaSim() {
   if (mode != 1) {
