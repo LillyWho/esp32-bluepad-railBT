@@ -18,5 +18,6 @@
 */
 
 #include "stadiacontroller.h"
-gamepad::gamepad() : gp() {}
-void gamepad::dpad_up() {}
+
+gamepad::gamepad() {}
+// bool gamepad::dpad_up() {}
