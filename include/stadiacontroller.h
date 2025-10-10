@@ -1,14 +1,12 @@
-#ifndef gamepad
-#define gamepad
+#ifndef stadiacontroller
+#define stadiacontroller
 
 #include <Arduino.h>
 
-#ifndef BP32_BLUEPAD32_H
-#include <Bluepad32.h>
-#endif
-
 class gamepad {
 public:
+  gamepad();
+
   bool dpad_up();
   bool dpad_down();
   bool dpad_left();
@@ -28,4 +26,5 @@ private:
   int max_axis = 509;
   int axis_deadzone = 16;
 };
-#endif
+
+#endif // stadiacontroller
