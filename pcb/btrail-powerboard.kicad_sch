@@ -740,7 +740,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector:Conn_01x09_Pin"
+		(symbol "Connector:Conn_01x10_Pin"
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -756,8 +756,8 @@
 					)
 				)
 			)
-			(property "Value" "Conn_01x09_Pin"
-				(at 0 -12.7 0)
+			(property "Value" "Conn_01x10_Pin"
+				(at 0 -15.24 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -782,7 +782,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Generic connector, single row, 01x09, script generated"
+			(property "Description" "Generic connector, single row, 01x10, script generated"
 				(at 0 0 0)
 				(effects
 					(font
@@ -817,7 +817,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "Conn_01x09_Pin_1_1"
+			(symbol "Conn_01x10_Pin_1_1"
 				(rectangle
 					(start 0.8636 10.287)
 					(end 0 10.033)
@@ -909,6 +909,17 @@
 				(rectangle
 					(start 0.8636 -10.033)
 					(end 0 -10.287)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start 0.8636 -12.573)
+					(end 0 -12.827)
 					(stroke
 						(width 0.1524)
 						(type default)
@@ -1016,6 +1027,18 @@
 				(polyline
 					(pts
 						(xy 1.27 -10.16) (xy 0.8636 -10.16)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -12.7) (xy 0.8636 -12.7)
 					)
 					(stroke
 						(width 0.1524)
@@ -1180,6 +1203,24 @@
 						)
 					)
 					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -12.7 180)
+					(length 3.81)
+					(name "Pin_10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1691,6 +1732,303 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Diode:MBR735"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MBR735"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_THT:TO-220-2_Vertical"
+				(at 0 -4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/MBR735-D.PDF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "35V 7.5A Schottky Barrier Rectifier Diode, TO-220"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode Schottky"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO?220*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MBR735_0_1"
+				(polyline
+					(pts
+						(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MBR735_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCM_SL_Capacitors:470uF_35V"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "470uF_35V"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm"
+				(at 0.762 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0.508 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "470uF, 35V Electrolytic Capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Electrolytic Capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Capacitor_THT:CP_Radial_D5.0mm_* Capacitor_THT:CP_Radial_D4.0mm_* Capacitor_THT:CP_Radial_D6.3mm_* Capacitor_THT:CP_Radial_D7.5mm_* Capacitor_THT:CP_Radial_D8.0mm_* Capacitor_THT:CP_Radial_D10.0mm_* Capacitor_THT:CP_Radial_D14.0mm_* Capacitor_THT:CP_Radial_D16.0mm_* Capacitor_THT:CP_Radial_D18.0mm_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "470uF_35V_0_0"
+				(text "+"
+					(at -2.032 1.524 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(text "-"
+					(at 2.032 1.524 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(symbol "470uF_35V_0_1"
+				(rectangle
+					(start -1.016 -2.286)
+					(end -0.508 2.286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 0.508 -2.286)
+					(end 1.016 2.286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "470uF_35V_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.7)
+					(name "~"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 3.81 0 180)
+					(length 2.7)
+					(name "~"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Transistor_FET:IRLZ34N"
 			(pin_names
 				(hide yes)
@@ -1989,131 +2327,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:+24V"
-			(power)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+24V"
-				(at 0 3.556 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+24V\""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+24V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+24V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:+5V"
 			(power)
 			(pin_numbers
@@ -2239,7 +2452,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:GND"
+		(symbol "power:GNDPWR"
 			(power)
 			(pin_numbers
 				(hide yes)
@@ -2252,7 +2465,7 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
+				(at 0 -5.08 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2260,8 +2473,8 @@
 					(hide yes)
 				)
 			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
+			(property "Value" "GNDPWR"
+				(at 0 -3.302 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2269,7 +2482,7 @@
 				)
 			)
 			(property "Footprint" ""
-				(at 0 0 0)
+				(at 0 -1.27 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2278,6 +2491,15 @@
 				)
 			)
 			(property "Datasheet" ""
+				(at 0 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GNDPWR\" , global ground"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2286,7 +2508,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(property "ki_keywords" "global ground"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2295,19 +2517,34 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "GND_0_1"
+			(symbol "GNDPWR_0_1"
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+						(xy -1.016 -1.27) (xy -1.27 -2.032) (xy -1.27 -2.032)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 -1.27) (xy -0.762 -2.032) (xy -0.762 -2.032)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 0)
 					)
 					(stroke
 						(width 0)
@@ -2317,8 +2554,56 @@
 						(type none)
 					)
 				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy -0.254 -2.032) (xy -0.254 -2.032)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 -1.27) (xy 0.254 -2.032) (xy 0.254 -2.032)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 -1.27) (xy -1.016 -1.27) (xy -1.016 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 -1.27) (xy 0.762 -2.032) (xy 0.762 -2.032) (xy 0.762 -2.032)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 			)
-			(symbol "GND_1_1"
+			(symbol "GNDPWR_1_1"
 				(pin power_in line
 					(at 0 0 270)
 					(length 0)
@@ -2340,12 +2625,6 @@
 			)
 			(embedded_fonts no)
 		)
-	)
-	(junction
-		(at 92.71 158.75)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0e0e323a-9355-41cd-a66a-6b137de0ded2")
 	)
 	(junction
 		(at 158.75 173.99)
@@ -2378,10 +2657,16 @@
 		(uuid "3684f119-8dc2-4954-a8fb-16ab48cea6da")
 	)
 	(junction
-		(at 261.62 130.81)
+		(at 240.03 139.7)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "38409d5d-5675-455c-85c6-314c9e4ad0f1")
+		(uuid "3bcdb21d-ac59-4de2-a972-5e1d7fb680fc")
+	)
+	(junction
+		(at 95.25 158.75)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3f858417-e5f3-4d42-ba99-b908d4db48ea")
 	)
 	(junction
 		(at 63.5 158.75)
@@ -2390,10 +2675,10 @@
 		(uuid "4485bc3b-c419-4d7c-9baf-6fc28f729196")
 	)
 	(junction
-		(at 148.59 173.99)
+		(at 232.41 147.32)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "47a97344-f778-45dd-9ee8-a04c87ed85a9")
+		(uuid "470b588b-2529-4c3d-b955-f7c93f82179a")
 	)
 	(junction
 		(at 166.37 158.75)
@@ -2408,10 +2693,22 @@
 		(uuid "54eb6de2-53cd-407a-9fdb-2ecddb8a5bb2")
 	)
 	(junction
+		(at 240.03 147.32)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "55996711-07a7-49c1-b065-cf839969cfd5")
+	)
+	(junction
 		(at 214.63 96.52)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5d365381-2974-4d0d-a1a5-76ab96a508a3")
+	)
+	(junction
+		(at 240.03 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6a32f0a8-a01a-40ff-a769-f9186dcbed18")
 	)
 	(junction
 		(at 134.62 173.99)
@@ -2438,6 +2735,12 @@
 		(uuid "71c2b6cd-efba-443b-a9a6-fc8bdcbd4636")
 	)
 	(junction
+		(at 252.73 158.75)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7afdccf3-82af-418e-bf6e-1e375e412156")
+	)
+	(junction
 		(at 66.04 181.61)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2450,16 +2753,40 @@
 		(uuid "88d1256c-7de9-452a-807a-10ad3d63cd0b")
 	)
 	(junction
+		(at 232.41 158.75)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "954fc472-83cd-4fb1-8ac0-b3a3580ef2d2")
+	)
+	(junction
 		(at 222.25 158.75)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b342dc69-5d18-4c4e-9078-57e6f0d01efd")
 	)
 	(junction
+		(at 95.25 123.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b8899379-4d15-4c96-80df-8594534b3d6d")
+	)
+	(junction
+		(at 224.79 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "be4851f4-7760-4823-8883-b04d03724903")
+	)
+	(junction
 		(at 132.08 130.81)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c138375a-65c3-49a0-b852-fdafd657b21a")
+	)
+	(junction
+		(at 232.41 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c97bee15-d45a-4c82-9691-1f218ed2d21c")
 	)
 	(junction
 		(at 139.7 130.81)
@@ -2474,16 +2801,21 @@
 		(uuid "da62a167-b5e2-417b-af09-c1502d5ae5e1")
 	)
 	(junction
-		(at 224.79 130.81)
+		(at 111.76 181.61)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "e110df02-b8c2-40b8-9a6c-3ff7298be923")
+		(uuid "e27928df-40a4-468c-ab6c-af621644c29a")
 	)
-	(junction
-		(at 261.62 133.35)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ec887e01-b426-41b0-b5aa-598035359b42")
+	(wire
+		(pts
+			(xy 111.76 181.61) (xy 152.4 181.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 191 99 0 1)
+		)
+		(uuid "00b5c796-b112-4bcf-93fb-249d085779e4")
 	)
 	(wire
 		(pts
@@ -2517,6 +2849,17 @@
 	)
 	(wire
 		(pts
+			(xy 252.73 130.81) (xy 252.73 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 255 28 0 1)
+		)
+		(uuid "067e2524-70f8-4ea9-b140-c527d8ae8a77")
+	)
+	(wire
+		(pts
 			(xy 132.08 93.98) (xy 127 93.98)
 		)
 		(stroke
@@ -2525,17 +2868,6 @@
 			(color 255 0 20 1)
 		)
 		(uuid "0790a746-1289-4e16-a6c2-6df2c5d79c05")
-	)
-	(wire
-		(pts
-			(xy 148.59 173.99) (xy 152.4 173.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-			(color 191 99 0 1)
-		)
-		(uuid "07e5fe85-13f0-4d41-9bbc-979abc471115")
 	)
 	(wire
 		(pts
@@ -2581,6 +2913,17 @@
 	)
 	(wire
 		(pts
+			(xy 261.62 158.75) (xy 252.73 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "12932f23-f9e8-48b9-9123-7841ec9be4f0")
+	)
+	(wire
+		(pts
 			(xy 200.66 40.64) (xy 207.01 40.64)
 		)
 		(stroke
@@ -2603,7 +2946,7 @@
 	)
 	(wire
 		(pts
-			(xy 222.25 158.75) (xy 261.62 158.75)
+			(xy 222.25 158.75) (xy 232.41 158.75)
 		)
 		(stroke
 			(width 0)
@@ -2621,6 +2964,17 @@
 			(type default)
 		)
 		(uuid "1c50a2be-b790-4866-aead-a51933f97d7c")
+	)
+	(wire
+		(pts
+			(xy 111.76 181.61) (xy 111.76 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 191 99 0 1)
+		)
+		(uuid "1e7941a6-8220-41e6-82ab-38aa43092d6b")
 	)
 	(wire
 		(pts
@@ -2665,6 +3019,16 @@
 	)
 	(wire
 		(pts
+			(xy 104.14 100.33) (xy 92.71 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2280cfd1-d4e7-4f1f-bbed-1cc689ded30b")
+	)
+	(wire
+		(pts
 			(xy 92.71 82.55) (xy 119.38 82.55)
 		)
 		(stroke
@@ -2673,6 +3037,17 @@
 			(color 255 252 0 1)
 		)
 		(uuid "24201cc3-4e0a-4b29-9b0e-45bfb17d495e")
+	)
+	(wire
+		(pts
+			(xy 232.41 121.92) (xy 232.41 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 16 255 1)
+		)
+		(uuid "2641f1d9-18bd-429a-b087-33a296440044")
 	)
 	(wire
 		(pts
@@ -2686,7 +3061,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 173.99) (xy 148.59 173.99)
+			(xy 147.32 173.99) (xy 152.4 173.99)
 		)
 		(stroke
 			(width 0)
@@ -2707,7 +3082,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 97.79) (xy 92.71 158.75)
+			(xy 95.25 97.79) (xy 95.25 123.19)
 		)
 		(stroke
 			(width 0)
@@ -2738,11 +3113,12 @@
 	)
 	(wire
 		(pts
-			(xy 257.81 133.35) (xy 261.62 133.35)
+			(xy 247.65 133.35) (xy 261.62 133.35)
 		)
 		(stroke
 			(width 0)
 			(type default)
+			(color 0 16 255 1)
 		)
 		(uuid "308b3492-66d3-4606-81c3-5703f0f24261")
 	)
@@ -2756,6 +3132,16 @@
 			(color 191 99 0 1)
 		)
 		(uuid "3132d060-f073-4a2c-b0a6-60d7d94def88")
+	)
+	(wire
+		(pts
+			(xy 124.46 116.84) (xy 124.46 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "350e2314-e85a-483a-94eb-06e503939299")
 	)
 	(wire
 		(pts
@@ -2802,6 +3188,28 @@
 	)
 	(wire
 		(pts
+			(xy 232.41 147.32) (xy 232.41 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "3c604b55-0f67-411a-8e26-34e2e63ba05f")
+	)
+	(wire
+		(pts
+			(xy 255.27 130.81) (xy 261.62 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 16 255 1)
+		)
+		(uuid "3f17f37a-a263-49ce-a64d-1ddd91f3cdd6")
+	)
+	(wire
+		(pts
 			(xy 205.74 158.75) (xy 222.25 158.75)
 		)
 		(stroke
@@ -2810,6 +3218,50 @@
 			(color 0 0 0 1)
 		)
 		(uuid "3f9e7903-39d6-41ec-9cb7-989e504ac589")
+	)
+	(wire
+		(pts
+			(xy 255.27 121.92) (xy 232.41 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 16 255 1)
+		)
+		(uuid "40d551c1-731a-48d5-ae41-3ae007d06e0d")
+	)
+	(wire
+		(pts
+			(xy 124.46 123.19) (xy 124.46 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "41feebe5-e85f-46c4-919f-f8c79c8661f7")
+	)
+	(wire
+		(pts
+			(xy 240.03 130.81) (xy 252.73 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 255 28 0 1)
+		)
+		(uuid "46e35986-d7dc-4137-a426-cc822786b138")
+	)
+	(wire
+		(pts
+			(xy 224.79 130.81) (xy 240.03 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 255 28 0 1)
+		)
+		(uuid "47eb11ad-2f6e-499c-8a85-93e5ed901af5")
 	)
 	(wire
 		(pts
@@ -2853,17 +3305,6 @@
 			(color 255 12 6 1)
 		)
 		(uuid "51969cea-6105-46e8-8f67-315c9a999207")
-	)
-	(wire
-		(pts
-			(xy 261.62 133.35) (xy 261.62 158.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-			(color 0 0 0 1)
-		)
-		(uuid "524900a1-cbe6-47e4-9e2e-c9af4ed9ac5d")
 	)
 	(wire
 		(pts
@@ -3059,6 +3500,16 @@
 	)
 	(wire
 		(pts
+			(xy 124.46 102.87) (xy 111.76 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a52551b-bdce-4862-85b9-de036863dafb")
+	)
+	(wire
+		(pts
 			(xy 39.37 181.61) (xy 39.37 92.71)
 		)
 		(stroke
@@ -3067,6 +3518,38 @@
 			(color 191 99 0 1)
 		)
 		(uuid "7b90bf82-3a1d-44e0-a097-9cc6e8d9b83d")
+	)
+	(wire
+		(pts
+			(xy 252.73 148.59) (xy 252.73 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "7e647ca8-e6d7-448f-946b-6fe25d42eac9")
+	)
+	(wire
+		(pts
+			(xy 147.32 173.99) (xy 148.59 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ef158f1-df52-4d45-8e62-69324127cc5b")
+	)
+	(wire
+		(pts
+			(xy 95.25 158.75) (xy 158.75 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "80063454-4e58-453a-befe-7579375ae8e7")
 	)
 	(wire
 		(pts
@@ -3088,17 +3571,6 @@
 			(color 191 99 0 1)
 		)
 		(uuid "8781d08a-068a-4fff-9fed-8a783dc1bf63")
-	)
-	(wire
-		(pts
-			(xy 92.71 158.75) (xy 158.75 158.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-			(color 0 0 0 1)
-		)
-		(uuid "87b6bcc9-42c1-4f47-acae-1109ff56e55f")
 	)
 	(wire
 		(pts
@@ -3155,6 +3627,16 @@
 	)
 	(wire
 		(pts
+			(xy 104.14 107.95) (xy 104.14 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f5bc21e-f0ed-47fb-9149-22594378845a")
+	)
+	(wire
+		(pts
 			(xy 99.06 107.95) (xy 30.48 107.95)
 		)
 		(stroke
@@ -3165,7 +3647,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 181.61) (xy 152.4 181.61)
+			(xy 66.04 181.61) (xy 111.76 181.61)
 		)
 		(stroke
 			(width 0)
@@ -3195,6 +3677,17 @@
 			(color 191 99 0 1)
 		)
 		(uuid "984b9426-3c3a-43e6-ba69-ded22de0b1b1")
+	)
+	(wire
+		(pts
+			(xy 240.03 147.32) (xy 247.65 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 16 255 1)
+		)
+		(uuid "985090ff-0128-4825-bd81-b5f8b8389e25")
 	)
 	(wire
 		(pts
@@ -3284,6 +3777,17 @@
 	)
 	(wire
 		(pts
+			(xy 240.03 130.81) (xy 240.03 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 255 28 0 1)
+		)
+		(uuid "b47700a0-0803-4662-86c9-465b12430c94")
+	)
+	(wire
+		(pts
 			(xy 212.09 40.64) (xy 212.09 91.44)
 		)
 		(stroke
@@ -3294,6 +3798,17 @@
 	)
 	(wire
 		(pts
+			(xy 95.25 123.19) (xy 95.25 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "bdb261b6-b659-4b10-96f8-3f7d01c17616")
+	)
+	(wire
+		(pts
 			(xy 147.32 173.99) (xy 147.32 176.53)
 		)
 		(stroke
@@ -3301,17 +3816,6 @@
 			(type default)
 		)
 		(uuid "c013f488-c2d0-43a4-bbd6-04d39b6575dd")
-	)
-	(wire
-		(pts
-			(xy 224.79 130.81) (xy 261.62 130.81)
-		)
-		(stroke
-			(width 0.0635)
-			(type default)
-			(color 255 28 0 1)
-		)
-		(uuid "c3b6f1ab-1114-45cd-b830-3d65150d4611")
 	)
 	(wire
 		(pts
@@ -3347,6 +3851,17 @@
 	)
 	(wire
 		(pts
+			(xy 95.25 97.79) (xy 92.71 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "c99ab677-172a-4885-8432-678654e8f2ab")
+	)
+	(wire
+		(pts
 			(xy 59.69 55.88) (xy 59.69 158.75)
 		)
 		(stroke
@@ -3369,6 +3884,28 @@
 	)
 	(wire
 		(pts
+			(xy 247.65 147.32) (xy 247.65 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 16 255 1)
+		)
+		(uuid "d972d2e2-39a8-4cc4-8291-5d7fabe628ce")
+	)
+	(wire
+		(pts
+			(xy 95.25 123.19) (xy 124.46 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "e0623183-547e-474b-af7d-efe13b167a50")
+	)
+	(wire
+		(pts
 			(xy 222.25 40.64) (xy 222.25 158.75)
 		)
 		(stroke
@@ -3387,6 +3924,17 @@
 			(type default)
 		)
 		(uuid "e78d38bf-96e4-4656-a549-2091fb9a82d2")
+	)
+	(wire
+		(pts
+			(xy 255.27 130.81) (xy 255.27 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 16 255 1)
+		)
+		(uuid "e792c860-c9c0-4f39-b23b-57875db026bd")
 	)
 	(wire
 		(pts
@@ -3442,7 +3990,7 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 158.75) (xy 92.71 158.75)
+			(xy 63.5 158.75) (xy 95.25 158.75)
 		)
 		(stroke
 			(width 0)
@@ -3471,6 +4019,17 @@
 			(color 0 0 0 1)
 		)
 		(uuid "f31306e0-19c4-457a-a489-6fbbb0917062")
+	)
+	(wire
+		(pts
+			(xy 232.41 158.75) (xy 252.73 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+			(color 0 0 0 1)
+		)
+		(uuid "f44e7870-27dc-44f4-af5e-f628a538cf8a")
 	)
 	(wire
 		(pts
@@ -3536,6 +4095,113 @@
 			(color 255 252 0 1)
 		)
 		(uuid "fec7fd82-7cd0-4926-9b49-a1ed3b0f80c8")
+	)
+	(label "AC_IN2"
+		(at 254 133.35 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8cd19c59-eb6d-4730-a7fa-79386c7e63fb")
+	)
+	(label "24VDC+"
+		(at 236.22 130.81 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bee195f2-82bc-4e17-8cf4-104b6789f957")
+	)
+	(label "GND_DC"
+		(at 254 158.75 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c8f1fe87-a0fd-41b6-822f-1278c2f7d767")
+	)
+	(label "AC_IN1"
+		(at 245.11 121.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ec11e20c-4e14-4b18-a8fc-c402c00cb837")
+	)
+	(symbol
+		(lib_id "Diode:MBR735")
+		(at 236.22 147.32 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "09ab00f1-0878-4b2f-b583-53e0dd445c80")
+		(property "Reference" "D3"
+			(at 230.886 153.162 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MBR735"
+			(at 236.22 144.526 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-2_Vertical"
+			(at 236.22 142.875 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/MBR735-D.PDF"
+			(at 236.22 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "35V 7.5A Schottky Barrier Rectifier Diode, TO-220"
+			(at 236.22 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4f5bce9c-f006-4c45-84b8-812a5a188c18")
+		)
+		(pin "1"
+			(uuid "51d810ef-8f0b-4d2c-9d4e-644a36e3abae")
+		)
+		(instances
+			(project "btrail-powerboard"
+				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x06_Pin")
@@ -3611,72 +4277,6 @@
 			(project ""
 				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
 					(reference "DRV8874_right1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 257.81 133.35 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "20e79fa5-3677-4e32-8543-f576197a005c")
-		(property "Reference" "#PWR01"
-			(at 257.81 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 257.81 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 257.81 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 257.81 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 257.81 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7bfef613-efda-4f4c-adc2-003d52cd4981")
-		)
-		(instances
-			(project ""
-				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
-					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -3829,6 +4429,143 @@
 		)
 	)
 	(symbol
+		(lib_id "Diode:MBR735")
+		(at 240.03 143.51 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "329fc647-cf0b-4e76-ad9d-4195f9440a47")
+		(property "Reference" "D4"
+			(at 245.11 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MBR735"
+			(at 243.586 142.748 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-2_Vertical"
+			(at 235.585 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/MBR735-D.PDF"
+			(at 240.03 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "35V 7.5A Schottky Barrier Rectifier Diode, TO-220"
+			(at 240.03 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ec25953f-7e61-43c8-89d7-8d6ad6066795")
+		)
+		(pin "1"
+			(uuid "d4476cdd-3143-4be9-b3b9-ebf420ead5da")
+		)
+		(instances
+			(project "btrail-powerboard"
+				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x02_Pin")
+		(at 119.38 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "47c23006-eb71-418d-a190-5440b4cfdc4c")
+		(property "Reference" "Chuff_Jack1"
+			(at 120.015 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x02_Pin"
+			(at 120.015 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 119.38 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 119.38 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated"
+			(at 119.38 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "dd7445f2-a18f-4254-a810-091da79aec76")
+		)
+		(pin "1"
+			(uuid "cb96c7c2-3f61-4920-8a64-acfb30b75102")
+		)
+		(instances
+			(project ""
+				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
+					(reference "Chuff_Jack1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x02_Pin")
 		(at 266.7 133.35 180)
 		(unit 1)
@@ -3936,7 +4673,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 148.59 173.99 0)
+		(at 147.32 173.99 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3945,7 +4682,7 @@
 		(fields_autoplaced yes)
 		(uuid "491427b2-3bd8-4565-b993-62e91e8d3de9")
 		(property "Reference" "#PWR03"
-			(at 148.59 177.8 0)
+			(at 147.32 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3954,7 +4691,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 148.59 168.91 0)
+			(at 147.32 168.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3962,7 +4699,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 148.59 173.99 0)
+			(at 147.32 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3971,7 +4708,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 148.59 173.99 0)
+			(at 147.32 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3980,7 +4717,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 148.59 173.99 0)
+			(at 147.32 173.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3995,6 +4732,74 @@
 			(project ""
 				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
 					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:MBR735")
+		(at 236.22 139.7 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4f554617-c511-4762-8500-60e90e4fca02")
+		(property "Reference" "D1"
+			(at 236.5375 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MBR735"
+			(at 236.5375 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-2_Vertical"
+			(at 236.22 135.255 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/MBR735-D.PDF"
+			(at 236.22 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "35V 7.5A Schottky Barrier Rectifier Diode, TO-220"
+			(at 236.22 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "adc2c6b0-9328-4f82-bd57-db4166230760")
+		)
+		(pin "1"
+			(uuid "c3a1d02c-db1c-4d8d-91df-2dd858e0721f")
+		)
+		(instances
+			(project ""
+				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
+					(reference "D1")
 					(unit 1)
 				)
 			)
@@ -4095,6 +4900,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Value" "Conn_01x02"
@@ -4218,6 +5024,211 @@
 		)
 	)
 	(symbol
+		(lib_id "PCM_SL_Capacitors:470uF_35V")
+		(at 252.73 144.78 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7469ed21-6160-4494-8e7b-b92c8b03d3d1")
+		(property "Reference" "C1"
+			(at 256.54 143.5099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "470uF_35V"
+			(at 256.54 146.0499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm"
+			(at 248.92 145.542 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 252.73 145.288 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470uF, 35V Electrolytic Capacitor"
+			(at 252.73 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "07052c23-8f5c-4876-adb0-7817cdabe910")
+		)
+		(pin "2"
+			(uuid "6c318ad9-2cfb-4981-bd0d-fd044f2f1b69")
+		)
+		(instances
+			(project ""
+				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
+					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDPWR")
+		(at 261.62 158.75 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "758258ca-2c5b-4bb4-8e35-1c777cab9d3f")
+		(property "Reference" "#PWR01"
+			(at 261.62 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDPWR"
+			(at 261.493 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 261.62 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 261.62 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDPWR\" , global ground"
+			(at 261.62 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5c02447d-01d5-4f78-8a69-fcd11aaf45a9")
+		)
+		(instances
+			(project ""
+				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
+					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:MBR735")
+		(at 232.41 143.51 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "766c2e9b-ef0d-41b1-b084-52569ec37d80")
+		(property "Reference" "D2"
+			(at 228.6 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "MBR735"
+			(at 229.616 148.082 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-2_Vertical"
+			(at 227.965 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/MBR735-D.PDF"
+			(at 232.41 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "35V 7.5A Schottky Barrier Rectifier Diode, TO-220"
+			(at 232.41 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "fddc88bc-f2a8-4d25-bcba-c8d9892d3a46")
+		)
+		(pin "1"
+			(uuid "fe147e9b-013d-4f4b-b45a-aba9cfb0c646")
+		)
+		(instances
+			(project "btrail-powerboard"
+				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
+					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x04_Pin")
 		(at 54.61 50.8 0)
 		(unit 1)
@@ -4292,73 +5303,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+24V")
-		(at 261.62 130.81 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8915ffc4-22d4-4c48-885d-1c45c4fd69a0")
-		(property "Reference" "#PWR02"
-			(at 261.62 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+24V"
-			(at 261.62 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 261.62 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 261.62 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+24V\""
-			(at 261.62 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4cb6b694-ef8e-44ff-8026-7335430eb7c1")
-		)
-		(instances
-			(project ""
-				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
-					(reference "#PWR02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Conn_01x09_Pin")
+		(lib_id "Connector:Conn_01x10_Pin")
 		(at 87.63 87.63 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4366,23 +5311,23 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9c6ecc02-008a-4a5f-83b2-0f38991bcd0d")
-		(property "Reference" "ESP32_jack1"
-			(at 78.486 85.852 0)
+		(property "Reference" "ESP_Jack1"
+			(at 87.63 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "Conn_01x09_Pin"
-			(at 78.74 87.884 0)
+		(property "Value" "Conn_01x10_Pin"
+			(at 87.63 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Vertical"
 			(at 87.63 87.63 0)
 			(effects
 				(font
@@ -4400,7 +5345,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x09, script generated"
+		(property "Description" "Generic connector, single row, 01x10, script generated"
 			(at 87.63 87.63 0)
 			(effects
 				(font
@@ -4436,10 +5381,13 @@
 		(pin "9"
 			(uuid "93fd2952-b2c3-4185-9e33-95e2a9024ce0")
 		)
+		(pin "10"
+			(uuid "c2a3b979-8be1-4fab-9cec-5654a8ed4aef")
+		)
 		(instances
 			(project ""
 				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
-					(reference "ESP32_jack1")
+					(reference "ESP_Jack1")
 					(unit 1)
 				)
 			)
@@ -4746,6 +5694,81 @@
 			(project ""
 				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
 					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLZ34N")
+		(at 109.22 107.95 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fa4f7f44-d0ff-448e-9761-f2610c5d8756")
+		(property "Reference" "Q3"
+			(at 120.396 106.426 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "IRL540NPBF"
+			(at 120.396 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+			(at 114.3 109.855 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irf1324pbf.pdf?fileId=5546d462533600a4015355dac93318a7"
+			(at 114.3 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "INFINEON MOSFET, N-Ch 24V 195A 0,0012R, TO-220"
+			(at 109.22 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "a2f185f4-a60d-4282-9e14-6bd1e913d651")
+		)
+		(pin "1"
+			(uuid "28db61d2-9dfc-4147-909b-1b9f914506fd")
+		)
+		(pin "3"
+			(uuid "9b815b0a-12d1-4f8e-ab53-85e99a11818c")
+		)
+		(instances
+			(project "btrail-powerboard"
+				(path "/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d"
+					(reference "Q3")
 					(unit 1)
 				)
 			)

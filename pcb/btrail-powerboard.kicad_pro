@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 1.0,
+          "height": 1.7,
+          "width": 1.7
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -239,7 +239,20 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [],
+    "erc_exclusions": [
+      [
+        "pin_not_connected|2019300|304800|a65ffe52-fd54-40fe-bf5e-93b0bb1bdae4|00000000-0000-0000-0000-000000000000|/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d|/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d|",
+        ""
+      ],
+      [
+        "pin_not_connected|381000|800100|22698b5d-38ec-4a4e-b3a8-ac32a2f24ad6|00000000-0000-0000-0000-000000000000|/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d|/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d|",
+        ""
+      ],
+      [
+        "pin_not_connected|482600|901700|3fa891e9-052e-47eb-ae7d-3c7019c5859b|00000000-0000-0000-0000-000000000000|/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d|/fc5fcd3d-9ac1-47d3-89b1-872aad02a51d|",
+        ""
+      ]
+    ],
     "meta": {
       "version": 0
     },
@@ -444,7 +457,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
@@ -495,9 +508,26 @@
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
-        "name": "PWR",
+        "name": "PWR_AC",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 1.5,
+        "via_diameter": 2.0,
+        "via_drill": 1.0,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.6,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "PWR_DC",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 1.2,
         "via_diameter": 2.0,
@@ -512,12 +542,24 @@
     "netclass_assignments": null,
     "netclass_patterns": [
       {
-        "netclass": "Default",
-        "pattern": "GND"
+        "netclass": "PWR_DC",
+        "pattern": "24VDC+"
       },
       {
-        "netclass": "PWR",
-        "pattern": "+24V"
+        "netclass": "PWR_AC",
+        "pattern": "AC_IN2"
+      },
+      {
+        "netclass": "PWR_AC",
+        "pattern": "AC_IN1"
+      },
+      {
+        "netclass": "PWR_DC",
+        "pattern": "GND_DC"
+      },
+      {
+        "netclass": "PWR_DC",
+        "pattern": "/GND_DC"
       }
     ]
   },
@@ -529,7 +571,7 @@
       "plot": "./",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "btrail-powerboard.glb",
       "svg": "",
       "vrml": ""
     },
@@ -624,6 +666,14 @@
       "version": 1
     },
     "net_format_name": "",
+    "ngspice": {
+      "fix_include_paths": true,
+      "meta": {
+        "version": 0
+      },
+      "model_mode": 4,
+      "workbook_filename": ""
+    },
     "page_layout_descr_file": "",
     "plot_directory": "",
     "space_save_all_events": true,
