@@ -108,6 +108,7 @@
         "solder_mask_bridge": "error",
         "starved_thermal": "error",
         "text_height": "warning",
+        "text_on_edge_cuts": "error",
         "text_thickness": "warning",
         "through_hole_pad_without_hole": "error",
         "too_many_vias": "error",
@@ -467,6 +468,7 @@
       "single_global_label": "ignore",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
+      "undefined_netclass": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
       "wire_dangling": "error"
@@ -543,15 +545,15 @@
     "netclass_patterns": [
       {
         "netclass": "PWR_DC",
-        "pattern": "24VDC+"
+        "pattern": "+24V"
       },
       {
         "netclass": "PWR_AC",
-        "pattern": "AC_IN2"
+        "pattern": "TRK_IN2"
       },
       {
         "netclass": "PWR_AC",
-        "pattern": "AC_IN1"
+        "pattern": "TRK_IN1"
       },
       {
         "netclass": "PWR_DC",
@@ -559,7 +561,31 @@
       },
       {
         "netclass": "PWR_DC",
-        "pattern": "/GND_DC"
+        "pattern": "GND"
+      },
+      {
+        "netclass": "PWR_DC",
+        "pattern": "BAT_IN1"
+      },
+      {
+        "netclass": "PWR_DC",
+        "pattern": "BAT_IN2"
+      },
+      {
+        "netclass": "PWR_AC",
+        "pattern": "/BAT_IN2"
+      },
+      {
+        "netclass": "PWR_AC",
+        "pattern": "/BAT_IN1"
+      },
+      {
+        "netclass": "PWR_AC",
+        "pattern": "/TRK_IN1"
+      },
+      {
+        "netclass": "PWR_AC",
+        "pattern": "/TRK_IN2"
       }
     ]
   },
