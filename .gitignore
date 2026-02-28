@@ -11,3 +11,4 @@ pcb/btrail-powerboard-backups
 pcb/btrail-powerboard-backups**/
 pcb/btrail-powerboard-backups/**
 "#auto_saved_files#"
+.vscode
