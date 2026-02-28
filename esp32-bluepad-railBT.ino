@@ -431,25 +431,54 @@ void setup() {
   pinMode(ledPin1, OUTPUT);
   pinMode(ledPin2, OUTPUT);
 }
+//constexpr double PI = 3.14159265358979323846;
+double calculateAccelerationCurve() {
+  double requestedThrottle = (lerp(yAxisL, -509, 509, -255, 255));
+  if (requestedThrottle <= 0) {
+    return 0;
+  }
+  
+  double targetThrottle = abs(requestedThrottle) - targetSpeed;
+  double amplitude = 127.5;                                                                                  // standard amplitude to achieve a curve zenith of 255
+  double accelCVAR = lerp(CVAR_3, 0, 255, 0.01, 0.255);                                                    // scale CVAR 3 to between 0.01 and 0.255 for acceleration values, this should give us plenty of headway for configuration
+  double frequency = accelCVAR;                                                                            // just rename it to frequency for ADHD coding brain compliance
+  double vMaxAmplitude = lerp(255 - CVAR_5, 0, 255, 0, amplitude);                                         // scale CVAR6 for speed restriction. How much of the given speed range of 0 - 255 are we allowed to use
+  double vMinAmplitude = lerp(CVAR_2, 0, 255, 0, amplitude);                                               // scale CVAR2 for speed boost. This helps when a motor stalls at slow speeds.
+  double finalAmplitude = lerp(vMaxAmplitude - vMinAmplitude, vMinAmplitude, vMaxAmplitude, 0, amplitude);  // Put it all together. We determine the maximum actual aplitude, scale that between the range of speed allowed, and calculate how much that is between zero and the total amplitude that produces y = 255.
 
+  double output = finalAmplitude * sin(frequency * targetThrottle - (PI / 2)) + finalAmplitude;
+  return round(output);
+}
+double calculateBrakingCurve() {
+  double requestedThrottle = (lerp(yAxisL, -509, 509, -255, 255));
+  if (requestedThrottle <= 0) {
+    return 0;
+  }
+
+  double targetThrottle = requestedThrottle - targetSpeed;
+  double amplitude = 127.5;
+  double cosinusOffset = 21.99114856;                                                                       // 7 * pi
+  double brakeCVAR = lerp(CVAR_4, 0, 255, 0.01, 0.255);                                                     // scale CVAR 4 to between 0.01 and 0.255 for brake values, this should give us plenty of headway for configuration
+  double frequency = brakeCVAR;                                                                             // just rename it to frequency for ADHD coding brain compliance
+  double vMaxAmplitude = lerp(255 - CVAR_5, 0, 255, 0, amplitude);                                          // scale CVAR6 for speed restriction. How much of the given speed range of 0 - 255 are we allowed to use
+  double vMinAmplitude = lerp(CVAR_2, 0, 255, 0, amplitude);                                                // scale CVAR2 for speed boost. This helps when a motor stalls at slow speeds.
+  double finalAmplitude = lerp(vMaxAmplitude - vMinAmplitude, vMinAmplitude, vMaxAmplitude, 0, amplitude);  // Put it all together. We determine the maximum actual aplitude, scale that between the range of speed allowed, and calculate how much that is between zero and the total amplitude that produces y = 255.
+
+  double output = finalAmplitude * (1 - cos(frequency * targetThrottle - cosinusOffset));
+  return targetSpeed - round(output);
+}
 void mode0() {
   targetSpeed = lerp(yAxisL, -509, 509, -255, 255);
   motorControl(motor.positivePwm(targetSpeed));
 }
 void mode1() {
   float directionLerp = lerp(yAxisL, -509, 509, -throttleSteps, throttleSteps);
-  // Serial.println(directionLerp);
-  if (std::abs(targetSpeed) == maxSpeed) {
-    throttleTick = 0;
-    return;
-  }  // reset tick variable, write to motor and exit
-
-  if (direction == 0) {
-    throttleTick = 0;
-  } else if (direction != 0 && millis() - throttleTick > throttleInterval && ((directionPlus && targetSpeed < maxSpeed) || (directionMinus && targetSpeed > -maxSpeed))) {
-    throttleTick = millis();
-    targetSpeed = constrain(targetSpeed + directionLerp, -maxSpeed, maxSpeed);
+  if (directionLerp >= 0) {
+    targetSpeed = calculateAccelerationCurve();
+  } else if (directionLerp < 0) {
+    targetSpeed = calculateBrakingCurve();
   }
+
   motorControl(motor.positivePwm(targetSpeed));
 }
 void mode2() {
@@ -548,25 +577,7 @@ void Select(bool pressed) {
     }
   }
 }
-static float pi = 3.14159;
-constexpr double PI = 3.14159265358979323846;
-double calculateAccelerationCurve() {
-  double requestedThrottle = (lerp(yAxisL, -509, 509, -255, 255);
-  if (requestedThrottle <= 0) {
-    return 0;
-  }
-  
-  double targetThrottle = requestedThrottle - speed;
-  double amplitude = 127.5;                                                                                  // standard amplitude to achieve a curve zenith of 255
-  double accelCVAR = lerp(CVAR_3, 0, 255, 0.01, 0.255);                                                    // scale CVAR 3 to between 0.01 and 0.255 for acceleration values, this should give us plenty of headway for configuration
-  double frequency = accelCVAR;                                                                            // just rename it to frequency for ADHD coding brain compliance
-  double vMaxAmplitude = lerp(255 - CVAR_6, 0, 255, 0, amplitude);                                         // scale CVAR6 for speed restriction. How much of the given speed range of 0 - 255 are we allowed to use
-  double vMinAmplitude = lerp(CVAR_2, 0, 255, 0, amplitude);                                               // scale CVAR2 for speed boost. This helps when a motor stalls at slow speeds.
-  double finalAmplitude = lerp(vMaxAmplitude - vMinAmplitude, vMinAmplitude, vMaxAmplitude, 0, amplitude);  // Put it all together. We determine the maximum actual aplitude, scale that between the range of speed allowed, and calculate how much that is between zero and the total amplitude that produces y = 255.
 
-  double output = finalAmplitude * sin(frequency * targetThrottle - (PI / 2)) + finalAmplitude;
-  return output;
-}
 #ifdef isSteamEngine
 void steamRoutineMachine() {
   float time = millis();

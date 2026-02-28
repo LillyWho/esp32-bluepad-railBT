@@ -1,8 +1,8 @@
 const uint8_t CVAR_1 = 1; //CHANGEME
 const uint8_t CVAR_2 = 0;
-const uint8_t CVAR_3 = 1;
-const uint8_t CVAR_4 = 1;
-const uint8_t CVAR_5 = 100;
+const uint8_t CVAR_3 = 50;
+const uint8_t CVAR_4 = 50;
+const uint8_t CVAR_5 = 255;
 const uint8_t CVAR_6 = 50;
 /* The remaining standard NMRA CVARS are uninteresting for our purposes */
 
@@ -11,3 +11,4 @@ const uint8_t CVAR_6 = 50;
 // CV 3 	Acceleration Rate
 // CV 4 	Deceleration Rate
 // CV 5 	Top Volts (Vhigh / Limit) -- Use this to throttle the duty cycle. All speed inputs will scale between CV 2 and this one. Integer between 0 and 255.
+// CV 6		Currently not implemented.
