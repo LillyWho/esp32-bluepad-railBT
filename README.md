@@ -1,6 +1,6 @@
 # Bluepad32 railBT firmware
 
-## This project aims to programme a microcontroller that controls a train using an ESP32, an H-Bridge and a Bluetooth Gamepad via Bluepad32.
+#### _This project aims to programme a microcontroller that controls a train using an ESP32, an H-Bridge and a Bluetooth Gamepad via Bluepad32._
 
 I made this as a cheaper alternative to premade G scale RC solutions, which can cost upwards of 70€.
 The parts I used are cheap and off the shelf components readily available from DIY electronics sites and ebay.
@@ -25,7 +25,19 @@ I've been designing and constantly upgrading a custom mainboard that houses all 
 - Menu / Start button: Control Mode up
 - X: Toggle Emergency brake (controller vibrates when applying the brake)
 - A: Toggle headlight
-
+## Parts list:
+- XL1509 Buck converter module (a complete module, not the chip itself) or similar
+- railBT Mainboard (optional but recommended, submit the kicad file to the custom PCB manufacturer of your choice)
+- ESP32 (any generic variant will do)
+- RJ-45 Jack
+- 470microF 35V capacitor (or similar spec)
+- A whole bunch of pin connectors to be broken down into various lengths
+- Four two-hole pin sockets
+- Two six-hole pin sockets
+- One polarised capacitor for five Volts 2A
+- Four MBR735 shotkey diodes or similar
+- Three IRL540NPBF mosfets or similar
+- A whole bunch of dupont jumper wires, in all different varieties - Just buy a large pack of all of them
 ## Planned features
 - MU with more than one extra engine
 - Move MU support to CANBus or other applicable protocol for multi engine support
