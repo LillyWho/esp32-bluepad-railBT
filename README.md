@@ -1,42 +1,51 @@
 # Bluepad32 railBT firmware
 
-## This project aims to create a microcontroller that controls a train using an ESP32, an H-Bridge and a Bluetooth Gamepad via Bluepad32.
+#### _This project aims to programme a microcontroller that controls a train using an ESP32, an H-Bridge and a Bluetooth Gamepad via Bluepad32._
 
 I made this as a cheaper alternative to premade G scale RC solutions, which can cost upwards of 70€.
 The parts I used are cheap and off the shelf components readily available from DIY electronics sites and ebay.
+I've been designing and constantly upgrading a custom mainboard that houses all the components, reducing the need for manual wiring significantly. See the pcb folder.
 
-~~In my case, I used a standard ESP32, an LN239 H-Bridge and a Google Stadia controller (any other controller supported by Bluepad32 would work but would require editing) to control an EZTEC Toy train that runs on G Gauge.
-For the pinout, please refer to the constants set in the sketch.~~ This was true, however I've modified the firmware to suit the features of the Polulu DRV8874 h-bridge board. This means that the firmware now depends on a custom library which can be found [here](https://github.com/LillyWho/DRV8874_H). The DRV8874 provides benefits such as not being reliant on a 5V voltage line, motor drive features such as coasting/braking to given pwm. Due to the lack of a 5V DC-DC converter on board of the h-bridge you will now have to supply your own to drive the ESP32. 
-The design relies on the following: [DC converter](https://www.ebay.de/itm/284112436345)
-Please check the PCB folder for a KiCad project that includes both a mainboard for engines, and a breakout board for coaches. 
-The mainboard relies on RJ-45 connectors (colloquially known as LAN cable plugs) to establish communication and a shared 24V line between the two engines. The breakout board is meant to be put into coaches, to control lighting. The coaches might gain more functionality once I switch the MU control to CANBus as it allows for more than two devices talking in serial.
+# Features:
+- Directional headlights (can be disabled if needed in favour of a simple headlight)
+- Power pickup from battery, or track (AC/DC/DCC agnostic via full bridge converter, two inputs are provided to be switched via six-pole switch)
+- RJ-45 socket for delivering 24V power and RX/TX to another engine (current implementation is similar to RS-232 serial and untested, with i2c or CANBus protocols being considered)
+- Inertia simulation (in early testing, doesn't fully work yet) like on a commercial DCC decoder (user-configurable, see CVAR.h in the include folder)
+- High grade traction properties thanks to Polulu DRV8874 brushed DC motor controller (braking to traction percentage, zero-resistance coasting, etc, see [Polulu website](https://www.pololu.com/product/4035]))
+- 24V rail for traction and lighting, and 5V rail for microcontroller and peripheries
+- Support for ultrasonic humidifier boards. The circuit and firmware allow for rapidly switching the board on and off in tune with the speed of the engine to simulate steam exhaust blast.
 
-Please note that all button mappings that aren't A/B, X/Y may be specific to the Stadia controller and thus may have to be adjusted by reading the console printout of the Bluepad test programme and editing the code accordingly, and that the maximum reported value of the thumbstick axis also needs to be adjusted according to the maximum that your specific model returns. It's not a complex process however. In the future I will shift the input functions over to a library making it so that different button mappings for different controllers can simply be swapped out by including a different library. If you've got a different Bluetooth gamepad, feel free to contact me via the issues section with a dump of your gamepad's console output.
-
-### Three modes are supported: 
-- Mode 0 for direct control of direction and speed via the left thumb stick
+### Three drive modes are supported: 
+- Mode 0 for direct control of direction and speed via the left thumb stick (for fine grain shunting)
 - Mode 1 for throttle mode via the left stick
-- Mode 2 for control via the D-pad
+- Mode 2 for control via the D-pad (for those who don't like having to hold the thumb stick during shunting)
 
 ## Control scheme: 
 
-- (...) button: Control Mode Down
-- Menu button: Control Mode up
+- (...) / Select button: Control Mode Down
+- Menu / Start button: Control Mode up
 - X: Toggle Emergency brake (controller vibrates when applying the brake)
 - A: Toggle headlight
 
-  
-## Other features:
-- MU control via serial connection (the current implementation is designed to have the trailing engine run in reverse, as is the case with any push-pull consist with power cars)
-- Directional headlight, can be enabled/disabled via a constant
-
+## Parts list:
+- XL1509 Buck converter module (a complete module, not the chip itself) or similar
+- railBT Mainboard (optional but recommended, submit the kicad file to the custom PCB manufacturer of your choice)
+- ESP32 (any generic variant will do)
+- RJ-45 Jack
+- 470microF 35V capacitor (or similar spec)
+- A whole bunch of pin connectors to be broken down into various lengths
+- Four two-hole pin sockets
+- Two six-hole pin sockets
+- One polarised capacitor for five Volts 2A
+- Four MBR735 shotkey diodes or similar
+- Three IRL540NPBF mosfets or similar
+- A whole bunch of dupont jumper wires, in all different varieties - Just buy a large pack of all of them
 ## Planned features
 - MU with more than one extra engine
 - Move MU support to CANBus or other applicable protocol for multi engine support
-- Inertia simulation
-- Sound via the WAVTrigger board
+- Sound via the WAVTrigger board (planned as targeting the WavTrigger Pro for its sound pitching capabilities)
 - Library for driving an ultrasonic humidifier board in sync with wheel spin to simulate steam exhaust synced to cylinder beats
 - button mapping swappable via libraries
 - hall effect sensor support for inductive train control, triggering a SPAD on existing DCC layouts
-## Demo video (outdated version)
+## Demo video (outdated early prototype version)
 https://www.youtube.com/watch?v=-wW9WL53EOc
