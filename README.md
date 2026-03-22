@@ -11,8 +11,9 @@ I've been designing and constantly upgrading a custom mainboard that houses all 
 - Power pickup from battery, or track (AC/DC/DCC agnostic via full bridge converter, two inputs are provided to be switched via six-pole switch)
 - RJ-45 socket for delivering 24V power and RX/TX to another engine (current implementation is similar to RS-232 serial and untested, with i2c or CANBus protocols being considered)
 - Inertia simulation (in early testing, doesn't fully work yet) like on a commercial DCC decoder (user-configurable, see CVAR.h in the include folder)
-- High grade traction properties thanks to Polulu DRV8874 brushed DC motor controller (Zero resistance braking, coasting, etc, see Polulu website)
+- High grade traction properties thanks to Polulu DRV8874 brushed DC motor controller (braking to traction percentage, zero-resistance coasting, etc, see [Polulu website](https://www.pololu.com/product/4035]))
 - 24V rail for traction and lighting, and 5V rail for microcontroller and peripheries
+- Support for ultrasonic humidifier boards. The circuit and firmware allow for rapidly switching the board on and off in tune with the speed of the engine to simulate steam exhaust blast.
 
 ### Three drive modes are supported: 
 - Mode 0 for direct control of direction and speed via the left thumb stick (for fine grain shunting)
@@ -25,6 +26,7 @@ I've been designing and constantly upgrading a custom mainboard that houses all 
 - Menu / Start button: Control Mode up
 - X: Toggle Emergency brake (controller vibrates when applying the brake)
 - A: Toggle headlight
+
 ## Parts list:
 - XL1509 Buck converter module (a complete module, not the chip itself) or similar
 - railBT Mainboard (optional but recommended, submit the kicad file to the custom PCB manufacturer of your choice)
