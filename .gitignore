@@ -6,7 +6,7 @@ diagram.json
 pcb/railbt-breakout/railbt-breakout-backups/**
 pcb/railbt-breakout/railbt-breakout-backups
 pcb/railbt-breakout/railbt-breakout-backups**/
-pcb/fp-info-cache
+"pcb/fp-info-cache"
 pcb/btrail-powerboard-backups
 pcb/btrail-powerboard-backups**/
 pcb/btrail-powerboard-backups/**
